@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head th:fragment="head(title)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/profile.css" th:href="@{/css/profile.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title th:replace="${title}">My Profile</title>
+</head>
+<body>
+
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand brand-text" href="../index.html" th:href="@{/}">TrojanMD</a>
+
+        <div class="dropdown">
+            <a th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}" class=" dropdown-toggle" href="#" style="text-decoration: none; color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jason Doe
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="user-info.html" th:href="@{/user/user-info}">My Information</a>
+                <a class="dropdown-item" href="#">Payment</a>
+                <a class="dropdown-item" href="#">Support</a>
+                <div class="line">&nbsp;</div>
+                <a class="dropdown-item" href="user-login.html" th:href="@{/user/logout}">Log Out</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Vertical navbar -->
+    <div th:fragment="vertical-navbar(n)" class="vertical-nav bg-white" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media d-flex align-items-center">
+                <img th:src="@{https://ui-avatars.com/api/(name=${session.loggedInUser.getFname()}+' '+${session.loggedInUser.getLname()}, background='0D8ABC', color='fff')}" src="https://ui-avatars.com/api/?name=Jason+Doe&background=0D8ABC&color=fff" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                <div class="media-body">
+                    <a class="username" href="#" th:href="@{/user/home}">
+                        <h4 th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}" class="m-0">Jason Doe</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Search</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="search-for-disease.html" th:href="@{/user/diseases/{system}(system='')}" class="nav-link font-italic" th:classappend="${n==7} ? 'bg-light' : 'text-dark'">
+                    Diseases
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="search-for-symptom.html" th:href="@{/user/symptoms}" class="nav-link font-italic" th:classappend="${n==8} ? 'bg-light' : 'text-dark'">
+                    Symptoms
+                </a>
+            </li>
+        </ul>
+        <br>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Main</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="home.html" th:href="@{/user/home}" class="nav-link font-italic" th:classappend="${n==1} ? 'bg-light' : 'text-dark'">
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/user/before-appointment}" href="before-appointment.html" class="nav-link font-italic" th:classappend="${n==5} ? 'bg-light' : 'text-dark'">
+                    Make an Appointment
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="my-appointment.html" th:href="@{/user/my-appointment}" class="nav-link font-italic" th:classappend="${n==3} ? 'bg-light' : 'text-dark'">
+                    My Appointments
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="my-doctor.html" th:href="@{/user/my-doctor}" class="nav-link font-italic" th:classappend="${n==4} ? 'bg-light' : 'text-dark'">
+                    My Doctors
+                </a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--                <a href="visit.html" th:href="@{/user/visit}" class="nav-link font-italic" th:classappend="${n==2} ? 'bg-light' : 'text-dark'">-->
+<!--                    Previous Visits-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a href="lab-test.html" th:href="@{/user/lab-test}" class="nav-link font-italic" th:classappend="${n==6} ? 'bg-light' : 'text-dark'">-->
+<!--                    Lab Tests-->
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+    </div>
+    <!-- End vertical navbar -->
+
+</body>
+</html>

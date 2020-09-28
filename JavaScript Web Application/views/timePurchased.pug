@@ -1,0 +1,36 @@
+extends base
+
+block content
+    nav.navbar.navbar-expand-lg.sub-nav.navbar-light(style="background-color: white")
+        .navbar-nav
+            a.nav-link(href="/account") My Account
+            a.nav-link.active(href="/time-purchased") Time Purchased
+            a.nav-link(href="/time-sold") Time Sold
+            a.nav-link(href="/selling") Selling
+            a.nav-link(href="/market") Marketplace
+    .container.time-purchased-content
+        .box-container
+            if(bookings.length !== 0)
+                .purchased-info.mb-3
+                    h2.green= `${bookings.length} Purchased`
+
+                each booking in bookings
+                    .box.mb-4.row
+                        .col-sm-2.box-left
+                            a(href=`/users/${booking.product.user._id}`)
+                                img.mb-2(src=`/img/users/${booking.product.user.photo}`)
+                                h5= `${booking.product.user.firstName} ${booking.product.user.lastName}`
+                        .col-sm-8.box-middle
+                            h4.green= booking.product.title
+                            p= booking.product.description
+                        .col-sm-2.box-right
+                            .dropdown.float-right.mr-4
+                                btn.fas.fa-ellipsis-v.gray.dropdown-toggle(id="dpd", data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                .dropdown-menu(aria-labelledby="dpd")
+                                    a.dropdown-item#writeReview(href=`/create-review/${booking.product.user._id}`) Write a Review
+                                    a.dropdown-item#deleteBooking(data-app-id=`${booking._id}`) Delete
+            else
+                h1.green You don't have any time purchased.
+                h1.green Explore and get some!
+                br
+                a.btn.btn-primary(href="/market") Get Started

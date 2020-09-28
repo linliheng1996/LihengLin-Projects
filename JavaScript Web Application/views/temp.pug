@@ -1,0 +1,86 @@
+block content
+    .container-fluid
+        .provider-content
+            .provider-header
+                img(src=`/img/users/${provider.photo}`)
+                h4= `${provider.firstName} ${provider.lastName}`
+            .provider-body.clearfix
+                .left-content
+                    h3.green.mb-3 Basic Info
+                    .row
+                        .col-sm-1
+                            .fas.fa-book.green
+                        .col-sm-3
+                            p Major
+                        .col-sm-7.pr-0
+                            p= provider.major
+                    .row
+                        .col-sm-1
+                            .fas.fa-graduation-cap.green
+                        .col-sm-3
+                            p Year
+                        .col-sm-7
+                            p= provider.yearOfStudy
+                    .row
+                        .col-sm-1
+                            .fas.fa-venus-mars.green
+                        .col-sm-3.pr-0
+                            p Gender
+                        .col-sm-7
+                            p= provider.gender
+                    .row
+                        .col-sm-1
+                            .fas.fa-user.green
+                        .col-sm-3
+                            p Age
+                        .col-sm-7
+                            p= `${provider.age} years old `
+                    .row
+                        .col-sm-1
+                            .fab.fa-linkedin.green
+                        .col-sm-3.pr-0
+                            p LinkedIn
+                        .col-sm-7
+                            p= provider.linkedIn
+                    .row
+                        .col-sm-1
+                            .far.fa-star.green
+                        .col-sm-3.pr-0
+                            p Rating
+                        .col-sm-7
+                            p= provider.ratingsAverage
+
+                .right-content
+                    h3.green.mb-3= `About ${provider.firstName} ${provider.lastName}`
+                    p= provider.description
+            .provider-appointment-header
+                h3 Available Appointments
+            .provider-appointment-body
+                .card-container
+                    each appointment in appointments
+                        .card
+                            .card-header.pb-0
+                                h5.green= appointment.title
+                            .card-body
+                                p= appointment.description
+                            .card-footer
+                                h5.float-left.pt-1.pb-1=`$ ${appointment.price}`
+                                h5.float-left.pt-1.pb-1=` /${appointment.duration}h`
+                                a.btn.btn-primary.float-right#book-appointment(data-app-id=`${appointment._id}`) Book
+
+            .provider-review-header
+                h3 Reviews
+            .provider-review-body
+                .card-container
+                    each review in reviews
+                        .card
+                            .card-rating
+                                - var i = 0;
+                                while i < Math.floor(review.rating)
+                                    .fas.fa-star.yellow
+                                    - i++;
+                                while i < 5
+                                    .far.fa-star.yellow
+                                    - i++
+                            .card-body
+                                p= review.review

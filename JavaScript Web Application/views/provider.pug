@@ -1,0 +1,69 @@
+extends base
+
+block content
+    .top-background
+
+    .provider-header
+        .header-left
+            img.img-thumbnail(src=`/img/users/${provider.photo}`)
+        .header-right
+            h3.green= `${provider.firstName} ${provider.lastName}`
+            .header-right-sub-content
+                .fas.fa-graduation-cap.gray.mr-2(style="height: 16px")
+                p.mr-4.mb-0.gray= provider.major
+                .fas.fa-book.gray.mr-2(style="height: 16px")
+                p.mb-0.gray= provider.yearOfStudy
+
+    .provider-body
+        .provider-body-sub-1
+            .body-left
+                .linkedIn.display-flex.mb-2
+                    .fab.fa-linkedin.gray.mr-3(style="height: 16px")
+                    p.mb-0.gray= provider.linkedIn
+                .personalWebsite.display-flex.mb-3
+                    .far.fa-user-circle.mr-3.gray
+                    p.mb-0.gray= provider.personalWebsite
+
+                .rating.mb-3
+                    .row
+                        .col-sm-4
+                            h2= `${provider.ratingsAverage}${(provider.ratingsAverage * 10) % 10 === 0 ? '.0' : ''}`
+                        .col-sm-8
+                            - var i = 0;
+                            while i < Math.floor(provider.ratingsAverage)
+                                .fas.fa-star.yellow
+                                - i++;
+                            while i < 5
+                                .far.fa-star.yellow
+                                - i++
+                            p= `(${provider.ratingsQuantity} ${provider.ratingsQuantity > 1 ? 'reviews' : 'review'})`
+                button.btn.btn-primary.chat-button.mb-5 Chat
+            .body-right
+                if(appointments.length > 0)
+                    each appointment in appointments
+                        .appointment-box.clearfix
+                            h4.green= appointment.title
+                            p= appointment.description
+                            a.btn.btn-primary.btn-sm.float-right.ml-4#book-appointment(data-app-id=`${appointment._id}`) Book
+                            h6.float-right.pt-1.pb-1.gray=`${appointment.duration}h`
+                            h6.float-right.pt-1.pb-1.gray=`$${appointment.price} /`
+                else
+                    h2.green= `Sorry, no available time of ${provider.firstName} ${provider.lastName}.`
+        if(reviews.length > 0)
+            h3.green Reviews
+            .provider-body-sub-2
+                each review in reviews
+                    .review-box
+                        .review-box-user-info.mb-2
+                            img(src=`/img/users/${review.user.photo}`)
+                            h6.mb-0.ml-2= `${review.user.firstName} ${review.user.lastName}`
+                        - var i = 0;
+                        while i < Math.floor(review.rating)
+                            .fas.fa-star.yellow
+                            - i++;
+                        while i < 5
+                            .far.fa-star.yellow
+                            - i++
+                        - var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+                        p#review-date= `Reviewed at ${months[review.createdAt.getMonth()]} ${review.createdAt.getDate()} ${review.createdAt.getFullYear()}`
+                        p= review.review

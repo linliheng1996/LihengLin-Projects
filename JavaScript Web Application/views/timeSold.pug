@@ -1,0 +1,29 @@
+extends base
+
+block content
+    nav.navbar.navbar-expand-lg.sub-nav.navbar-light(style="background-color: white")
+        .navbar-nav
+            a.nav-link(href="/account") My Account
+            a.nav-link(href="/time-purchased") Time Purchased
+            a.nav-link.active(href="/time-sold") Time Sold
+            a.nav-link(href="/selling") Selling
+            a.nav-link(href="/market") Marketplace
+    .container.time-purchased-content
+        .box-container
+            if(bookings.length !== 0)
+                .sold-info.mb-3
+                    h2.green= `${bookings.length} Sold`
+                    - var earning = 0;
+                     - for( const booking of bookings) earning += booking.price;
+                    h2.green= `Total $${earning} Earned`
+                each booking in bookings
+                    .box.mb-4.row
+                        .col-sm-2.box-left
+                            a(href=`/users/${booking.user._id}`)
+                                img.mb-2(src=`/img/users/${booking.user.photo}`)
+                                h5= `${booking.user.firstName} ${booking.user.lastName}`
+                        .col-sm-10.box-middle
+                            h4.green= booking.product.title
+                            p= booking.product.description
+            else
+                h1.green You don't have any time sold.

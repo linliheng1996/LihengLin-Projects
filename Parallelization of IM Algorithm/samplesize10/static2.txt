@@ -1,0 +1,63 @@
+global max node = 4841, max influence = 3998.2
+global max node = 3880, max influence = 3999.1
+global max node = 2961, max influence = 4003
+global max node = 443, max influence = 3995.9
+443  3995.899902  2961  4003.000000  3880  3999.100098  4841  3998.199951  
+global max node = 2961 with influence = 4003.000000
+global max node = 4905, max influence = 4004.8
+global max node = 3458, max influence = 4001
+global max node = 2760, max influence = 4001
+global max node = 365, max influence = 4004.4
+365  4004.399902  2760  4001.000000  3458  4001.000000  4905  4004.800049  
+global max node = 4905 with influence = 4004.800049
+global max node = 5338, max influence = 4002.5
+global max node = 3658, max influence = 4004.9
+global max node = 2553, max influence = 4000
+global max node = 1022, max influence = 4008.6
+1022  4008.600098  2553  4000.000000  3658  4004.899902  5338  4002.500000  
+global max node = 1022 with influence = 4008.600098
+global max node = 5974, max influence = 4001.7
+global max node = 3750, max influence = 4005.9
+global max node = 2237, max influence = 4002.7
+global max node = 251, max influence = 4003.2
+251  4003.199951  2237  4002.699951  3750  4005.899902  5974  4001.699951  
+global max node = 3750 with influence = 4005.899902
+global max node = 5672, max influence = 4012.6
+global max node = 3676, max influence = 4013.1
+global max node = 2430, max influence = 4007.9
+global max node = 1496, max influence = 4009.8
+1496  4009.800049  2430  4007.899902  3676  4013.100098  5672  4012.600098  
+global max node = 3676 with influence = 4013.100098
+global max node = 5868, max influence = 4009.7
+global max node = 3287, max influence = 4008.1
+global max node = 2622, max influence = 4005.9
+global max node = 456, max influence = 4017.3
+456  4017.300049  2622  4005.899902  3287  4008.100098  5868  4009.699951  
+global max node = 456 with influence = 4017.300049
+global max node = 5627, max influence = 4002.9
+global max node = 3386, max influence = 4005.8
+global max node = 1958, max influence = 4004.6
+global max node = 549, max influence = 4005.1
+549  4005.100098  1958  4004.600098  3386  4005.800049  5627  4002.899902  
+global max node = 3386 with influence = 4005.800049
+global max node = 5737, max influence = 4003.9
+global max node = 3737, max influence = 4007.1
+global max node = 1792, max influence = 4013.7
+global max node = 502, max influence = 4014.9
+502  4014.899902  1792  4013.699951  3737  4007.100098  5737  4003.899902  
+global max node = 502 with influence = 4014.899902
+global max node = 5968, max influence = 4003.8
+global max node = 3869, max influence = 4007.2
+global max node = 1595, max influence = 4010.2
+global max node = 1136, max influence = 4002.4
+1136  4002.399902  1595  4010.199951  3869  4007.199951  5968  4003.800049  
+global max node = 1595 with influence = 4010.199951
+global max node = 5394, max influence = 4010
+global max node = 3643, max influence = 4010.4
+global max node = 1711, max influence = 4018.7
+global max node = 319, max influence = 4012.2
+319  4012.199951  1711  4018.699951  3643  4010.399902  5394  4010.000000  
+global max node = 1711 with influence = 4018.699951
+done!
+seed: 1711 1595 502 3386 456 3750 1022 4905 3676 2961 
+Execution time = 1140.690936 sec

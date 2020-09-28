@@ -1,0 +1,8 @@
+slurmstepd: error: execve(): /auto/rcf-27/lihengl/ee451_project/./graph-partition: Exec format error
+srun: error: hpc3997: task 0: Exited with exit code 8
+slurmstepd: error: execve(): /auto/rcf-27/lihengl/ee451_project/./graph-partition: Exec format error
+slurmstepd: error: execve(): /auto/rcf-27/lihengl/ee451_project/./graph-partition: Exec format error
+slurmstepd: error: execve(): /auto/rcf-27/lihengl/ee451_project/./graph-partition: Exec format error
+srun: error: hpc4000: task 3: Exited with exit code 8
+srun: error: hpc3999: task 2: Exited with exit code 8
+srun: error: hpc3998: task 1: Exited with exit code 8

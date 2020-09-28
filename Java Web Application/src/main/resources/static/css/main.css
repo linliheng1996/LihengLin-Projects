@@ -1,0 +1,652 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,700,800|Open+Sans:400,400i,600|Rubik:400,500');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    width:100%;
+    overflow-x:hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.text-big {
+    font-size: 3.8rem;
+    font-weight: 600;
+}
+
+.flex {
+    display: flex;
+}
+
+
+
+/******************* navbar *******************/
+.navbar {
+    background: rgba(20, 20, 20, 0.75);
+}
+
+.navbar-brand {
+    margin-left: 5%;
+    font-size:150%;
+}
+
+.nav-item {
+    margin-left: 1rem;
+}
+
+.navbar-toggler-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.navbarNav {
+    padding-left: 100px;
+}
+
+#nav-buttons-div {
+    position: absolute;
+    right: 10%;
+    top: 15px;
+}
+
+.join-now-btn {
+    margin-left:0.5rem;
+    color:#FFFFFF;
+}
+
+.dropdown .line {
+    margin: 3px auto;
+    width: 90%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+/******************* head *******************/
+.container-fluid {
+    margin:0;
+    padding: 0;
+}
+
+.top-image {
+    background-image: url("../images/doctor.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 615px;
+    overflow: hidden;
+}
+
+.top-text {
+    height:50%;
+    width: 50%;
+    position:absolute;
+    top:22%;
+    left:50%;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+.top-text-big {
+    font-size: 3.8rem;
+    font-weight: 600;
+}
+
+/********************* Responsive *****************************/
+
+@media only screen and (max-width: 1259px) and (min-width: 980px) {
+    .top-image {
+        overflow: hidden;
+        background-position: -100px;
+    }
+
+    .top-text {
+        height:50%;
+        width: 70%;
+        position:absolute;
+        top:15%;
+        left:26%;
+        vertical-align: middle;
+        font-family: 'Muli', sans-serif;
+        z-index: 1;
+    }
+
+    .top-text-big {
+        font-size: 3.2rem;
+        font-weight: 600;
+        float:right;
+    }
+
+    .text-big {
+        font-size: 3rem;
+        font-weight: 600;
+    }
+
+    .hiw-title {
+        background-position: -100px;
+        height: 30vh;
+    }
+}
+
+@media only screen and (max-width: 777px) and (min-width: 430px) {
+    .top-image {
+        overflow: hidden;
+        background-position: -200px;
+    }
+
+    .top-text {
+        height:50%;
+        width: 65%;
+        position:absolute;
+        top:22%;
+        left:32%;
+        vertical-align: middle;
+        font-family: 'Muli', sans-serif;
+        z-index: 1;
+    }
+
+    .top-text-big {
+        font-size: 2.5rem;
+        font-weight: 600;
+        float:right;
+    }
+
+    .feature-inner {
+        position: relative;
+        margin-top:-100px;
+        z-index: 2;
+    }
+
+    .text-big {
+        font-size: 3rem;
+        font-weight: 600;
+    }
+
+    .hiw-title {
+        background-position: -420px;
+    }
+
+    .membership-bottom-content .row {
+        width: 100% !important;
+    }
+}
+
+
+@media only screen and (max-width: 429px) and (min-width: 321px) {
+    .navbar-brand {
+        margin-left: 2%;
+        font-size:150%;
+    }
+
+    #nav-buttons-div {
+        position: absolute;
+        right: 18%;
+    }
+
+    .top-image {
+        overflow: hidden;
+        background-position: -260px;
+    }
+
+    .top-text {
+        height:50%;
+        width: 65%;
+        position:absolute;
+        top:45%;
+        left:35%;
+        vertical-align: middle;
+        font-family: 'Muli', sans-serif;
+        z-index: 1;
+    }
+
+    .top-text-big {
+        font-size: 2.5rem !important;
+        font-weight: 600;
+        float:right;
+    }
+
+    .text-big {
+        font-size: 3rem !important;
+        font-weight: 600;
+    }
+
+    .join-now-btn {
+        margin-left:2px;
+        color:#FFFFFF;
+    }
+
+    .feature-inner {
+        position: relative;
+        margin-top:-60px !important;
+        z-index: 2;
+    }
+
+    .hiw-title {
+        background-position: -420px;
+    }
+
+    .membership-bottom-content .row {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .navbar-brand {
+        margin: 0;
+        font-size:120%;
+    }
+
+    .top-image {
+        overflow: hidden;
+        background-position: -288px;
+    }
+
+    .top-text {
+        height:50%;
+        width: 80%;
+        position:absolute;
+        top:62%;
+        left:22%;
+        vertical-align: middle;
+        font-family: 'Muli', sans-serif;
+        z-index: 1;
+    }
+
+    .top-text-big {
+        font-size: 2.5rem;
+        font-weight: 600;
+        float:right;
+    }
+
+    .text-big {
+        font-size: 3rem;
+        font-weight: 600;
+    }
+
+    #nav-buttons-div {
+        position: absolute;
+        right: 22%;
+        top: 12px;
+    }
+
+    .join-now-btn {
+        margin-left:2px;
+        color:#FFFFFF;
+    }
+
+    .feature-inner {
+        position: relative;
+        margin-top:-100px;
+        z-index: 2;
+    }
+
+    .hiw-title {
+        background-position: -420px;
+    }
+
+    .membership-bottom-content .row {
+        width: 100% !important;
+    }
+}
+
+
+.middle-content {
+    margin-bottom: 10%;
+}
+
+
+/******************* Feature *******************/
+
+.feature-inner {
+    position: relative;
+    margin-top:-160px;
+    z-index: 2;
+}
+
+.inner-box {
+    position: relative;
+    background:#FFFFFF;
+    padding:40px 50px;
+    box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.1);
+    border-radius: 10px;
+}
+
+.feature-box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/******************* Doctor *******************/
+
+.doctor-content {
+    margin-bottom: 10%;
+}
+
+.doctor-block {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.doc-image {
+    padding: 6px;
+}
+
+.grey {
+    color:grey;
+}
+
+/******************* Get started *******************/
+
+.get-started-content {
+    text-align: center;
+    color: #42A5F5;
+    margin-bottom: 10%;
+}
+
+
+.subscribe-content {
+    background: #599fd9;
+    margin: 0;
+    height: 100px;
+}
+
+/******************** footer & sub-footer ************************/
+
+.footer {
+    background: #434343;
+    margin: 0px;
+    text-align: left;
+    bottom:0;
+    color: #D5D5D5;
+    padding: 20px;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer a {
+    color: #D5D5D5;
+}
+
+.footer input {
+    background-color:#434343;
+    border-radius: 3px;
+    border:1px solid #D5D5D5;
+    margin-right: 6px;
+    margin-top: 3px;
+    width: 160px;
+}
+
+.footer h5 {
+    color: #a0a0a0;
+}
+
+.subscribe-button {
+    margin-top:3px;
+}
+
+.sub-footer {
+    background: #434343;
+    margin: 0px;
+    text-align: center;
+    bottom:0;
+    color: #a0a0a0;
+    padding: 5px;
+}
+
+
+/*********************** log in *************************/
+
+.login-content {
+    background-image: url("../images/login.jpg");
+    background-repeat: no-repeat;
+    display: block;
+    height: 65vh;
+    min-height: 700px;
+    max-width: 1500px;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 200px;
+}
+
+.login-content::after {
+    position: absolute;
+    display: block;
+    visibility: visible;
+    bottom: -1px;
+    left: 0;
+    height: 250px;
+    width: 100%;
+    z-index: 0;
+    content: " ";
+    background: url("../images/smile-mask-one.svg") bottom center no-repeat;
+    background-size: 150%;
+}
+
+.login-outer-wrapper {
+    min-width: 340px;
+    position: absolute;
+    right:0;
+    top:0;
+    padding: 120px 16px 18px 16px;
+    z-index: 2;
+}
+
+.login-inner-wrapper {
+    background: rgba(20, 20, 20, 0.75);
+    padding:40px 50px;
+    box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.3);
+    border-radius: 10px;
+    color:#FFFFFF;
+}
+
+input[type=submit] {
+    padding: 9px 20px !important;
+    font-size: 26px !important;
+    background: #0379CE !important;
+    border: none;
+    text-transform: uppercase;
+    /*font-family: 'Encode Sans',sans-serif;*/
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    color: #FFFFFF !important;
+    border-radius: 4px;
+}
+
+/*********************** sign up *************************/
+
+.signup-content {
+    background-image: url("../images/telehealth.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 65vh;
+    min-height: 700px;
+    max-width: 1500px;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 200px;
+    z-index: 2;
+}
+
+.signup-content::after {
+    position: absolute;
+    display: block;
+    visibility: visible;
+    bottom: -1px;
+    left: 0;
+    height: 15%;
+    width: 100%;
+    z-index: 0;
+    content: " ";
+    background: url("../images/smile-mask-one.svg") bottom center no-repeat;
+    background-size: 150%;
+}
+
+.signup-outer-wrapper {
+    margin: 0 auto;
+    min-width: 340px;
+    max-width: 600px;
+    padding: 120px 16px 18px 16px;
+    z-index: 2;
+}
+
+
+.signup-inner-wrapper {
+    background: #FFFFFF;
+    padding:40px 50px;
+    box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.3);
+    border-radius: 10px;
+    color:black;
+    z-index:2;
+}
+
+
+
+
+/******************* How it works **********************/
+
+.hiw-title {
+    background-image: url("../images/hiw.jpg");
+    background-repeat: no-repeat;
+    height: 340px;
+}
+
+.hiw-title-inner {
+    text-align: center;
+    width: 80%;
+    margin:50px auto;
+}
+
+.steps-box {
+    padding:40px 50px;
+    box-shadow: 0px 10px 10px 0px rgba(8, 18, 109, 0.1);
+    border-radius: 10px;
+    margin: 0 20px 100px 20px;
+}
+
+.what-we-treat-title {
+    width: 70%;
+    margin: 100px 40px 100px 40px;
+}
+
+.wwt-box {
+    margin:20px 60px;
+    padding-top: 60px;
+}
+
+.wwt-img-medical {
+    background-image: url("../images/medical.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    overflow: hidden;
+}
+
+.wwt-img-behavior {
+    background-image: url("../images/behavior.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    overflow: hidden;
+}
+
+.wwt-img-dermatology {
+    background-image: url("../images/dermatology.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    overflow: hidden;
+}
+
+.what-we-treat {
+    background-color: #f9f9f9;
+}
+
+
+/********************* Membership ***********************/
+.membership-top-content {
+    background-image: url("../images/membership.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 670px;
+}
+
+.membership-title {
+    position:absolute;
+    top:50%;
+    left:5%;
+}
+
+.membership-middle-content {
+    padding: 40px 50px;
+    margin-top: 120px;
+    margin-bottom: 100px;
+}
+
+.membership-middle-content i {
+    color: #42A5F5;
+    margin-left: 30%;
+}
+
+.middle-content-inner {
+    padding-bottom: 30px;
+}
+
+.membership-box {
+    padding:40px 60px;
+    box-shadow: 0px 10px 10px 0px rgba(8, 18, 109, 0.1);
+    border-radius: 10px;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+}
+
+.membership-bottom-content {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+
+}
+
+.membership-bottom-content .row {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/********************* Contact Us ***********************/
+.contact-us-header {
+    background-image: url("../images/contactus.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    text-align: center;
+}
+
+.contact-us-header h1 {
+    font-size: 4rem;
+    position:absolute;
+    top:20%;
+}
+
+.contact-us-content {
+    margin: 20px 0;
+    padding: 40px 40px;
+    color: grey;
+}
+

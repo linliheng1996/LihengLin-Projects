@@ -1,0 +1,652 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+html, body {
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+div {
+    display: block;
+}
+
+.display-flex {
+    display: flex;
+    align-items: center;
+}
+
+.alert {
+    position: absolute;
+    top: 65px;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #0cc276 !important;
+    border-color: #0cc276 !important;
+}
+
+.green {
+    color: #12c97d;
+}
+
+.gray {
+    color: gray;
+}
+
+.white {
+    color: white;
+}
+
+.yellow {
+    color: #ffcc00;
+}
+
+.ratingStar:hover{
+    cursor: pointer;
+}
+
+.fa-bookmark:hover{
+    cursor: pointer;
+}
+
+/************************** navbar ****************************/
+.navbar {
+    background: #12c97d;
+    height: 63px;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar button {
+    color: white;
+    border-color: white;
+}
+
+.navbar button:hover {
+    background-color: white;
+    color: #12c97d;
+    border-color: #12c97d;
+}
+
+.navbar img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+
+/******************** footer & sub-footer ************************/
+
+.footer {
+    background: #434343;
+    width: 100%;
+    bottom:0;
+    margin: 0;
+    text-align: left;
+    color: #D5D5D5;
+    padding: 20px 20px 0 20px;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer a {
+    color: #D5D5D5;
+}
+
+.footer input {
+    background-color:#434343;
+    border-radius: 3px;
+    border:1px solid #D5D5D5;
+    margin-right: 6px;
+    margin-top: 3px;
+    width: 160px;
+}
+
+.footer h5 {
+    color: #a0a0a0;
+}
+
+.subscribe-button {
+    margin-top:3px;
+}
+
+.sub-footer {
+    background: #434343;
+    margin: 0;
+    text-align: center;
+    bottom:0;
+    color: #a0a0a0;
+    padding: 2px;
+}
+
+.input-group {
+    text-align: center;
+}
+
+.input-group input{
+    float: left;
+
+}
+
+/*********************** Index *************************/
+
+.index-content {
+    background: #f7f7f7;
+    min-height: calc(100% - 63px - 213px);
+    padding: 60px 200px;
+}
+
+.index-page-content {
+    min-height: 500px;
+    height: 100%;
+    /*padding: 60px 200px;*/
+}
+
+.index-page-background {
+    height: calc(100% - 63px);
+    width: 100%;
+    /*background-image: url("/img/index.jpg");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(to right bottom, rgba(60, 60, 60, 0.4), rgba(20, 20, 20, 0.6)), url("/img/index.jpg");
+}
+
+.index-text {
+    position: absolute;
+    top: 250px;
+    left: 100px;
+}
+
+.index-text h1 {
+    font-size: 4rem;
+}
+
+.justify {
+    text-align: justify;
+}
+
+
+/*********************** Log In *************************/
+
+.login-content {
+    background: #f7f7f7;
+    padding: 80px;
+    height: calc(100% - 63px - 213px);
+    min-height: 554px;
+}
+
+.login-inner {
+    background: #FFFFFF;
+    padding:40px 50px;
+    width: 400px;
+    margin: 0px auto;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.12), 0 2px 3px -1px rgba(0,0,0,.2);
+    border-radius: 10px;
+    color:black;
+    z-index:2;
+}
+
+.login-content a {
+    text-decoration: none;
+}
+
+.login-content a:hover {
+    color: #7dd56f;
+}
+
+
+/*************************  Sign up  ****************************/
+
+.signup-content {
+    background: #f7f7f7;
+    padding: 80px;
+    height: calc(100% - 63px - 213px);
+    min-height: 623px;
+}
+
+
+.signup-inner {
+    background: #FFFFFF;
+    padding:40px 50px;
+    width: 465px;
+    margin: 0 auto;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.12), 0 2px 3px -1px rgba(0,0,0,.2);
+    border-radius: 10px;
+    color:black;
+    z-index:2;
+}
+
+.signup-inner .form-row {
+    margin-bottom: 5px;
+}
+
+.signup-inner h2 {
+    text-align: center;
+}
+
+/*************************  Sign up  ****************************/
+
+.forgot-password-content {
+    width: 40%;
+    margin: 40px auto;
+    padding: 40px 0;
+    height: 400px;
+}
+
+/*********************** Account Template *************************/
+
+.account-wrapper {
+    background: #f7f7f7;
+    padding: 60px 0;
+}
+
+.account-content {
+    margin: 0 auto;
+    width: 60%;
+    min-width: 680px;
+    background: white;
+}
+
+.image-and-name img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+}
+
+#userImage {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.sub-content {
+    padding: 40px;
+}
+
+/*** side navbar ***/
+
+.side-navbar {
+    padding: 40px 10px;
+    background-image: linear-gradient(to right bottom, #68e854, #28b487);
+    /*background-image: linear-gradient(to right bottom, #7dd56f, #28b487);*/
+}
+
+.side-navbar ul {
+    list-style-type: none;
+}
+
+.side-navbar a {
+    color: white;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.side-navbar .line {
+    margin: 2rem 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+.image-and-name {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+/*********************** Account Settings *************************/
+
+.form-basic-info input[type="file"] {
+    display: none;
+}
+
+#uploadNewPhoto {
+    color: #12c97d;
+    margin-left: 10px;
+    padding: 3px;
+}
+
+#uploadNewPhoto:hover, #uploadNewPhoto:active {
+    /*border: 1px solid #28b487;*/
+    /*border-radius: 5px;*/
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.settings .line {
+    margin: 3rem 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+/************************* Market ***************************/
+.market-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.providers-content .card-container {
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 80px;
+}
+
+.providers-content .card {
+    width: 320px;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.15);
+
+}
+
+.providers-content .card-header {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 110px;
+    background-image: linear-gradient(to right bottom, #68e854, #0cc276);
+}
+
+.providers-content .card-header img {
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+}
+
+.providers-content .card-body {
+    padding: 10px 30px;
+    color: gray;
+}
+
+.providers-content .line {
+    margin: 5px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.providers-content .body-top {
+    font-size: small;
+}
+
+
+.providers-content .card-footer {
+    height: 78px;
+    padding: 20px;
+}
+
+.providers-content .card-footer {
+    color: gray;
+    font-size: small;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.providers-content .rating {
+    position: relative;
+    top: 8px;
+}
+
+/************************* Market Filter ***************************/
+
+.filter {
+    background: #F5F5F5;
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.fa-sliders-h:hover {
+    cursor: pointer;
+}
+
+
+/************************* Provider Profile ***************************/
+.provider-content {
+    background: #f0f0f0;
+}
+
+.top-background {
+    background: url("/img/provider-profile-top.jpg");
+    width: 100%;
+    height: 240px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.provider-header {
+    width: 100%;
+    height: 170px;
+    position: relative;
+    margin-top: -60px;
+    background: transparent;
+    z-index: 2;
+    display: inline-flex;
+    padding-left: 190px;
+    /*justify-content: flex-start;*/
+}
+
+.provider-header img {
+    border-radius: 50%;
+    height: 140px;
+    width: 140px;
+    min-width: 140px;
+    /*margin-left: 50%;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.header-right {
+    margin-top: 70px;
+    margin-left: 50px;
+}
+
+.header-right-sub-content {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+
+.provider-body {
+    width: 100%;
+    background: #f0f0f0;
+    min-height: calc(100% - 63px - 213px - 350px);
+    padding: 20px 160px;
+}
+
+.provider-body-sub-1 {
+    display: inline-flex;
+    margin-bottom: 40px;
+}
+
+.chat-button {
+    width: 170px;
+    text-align: center;
+}
+
+.appointment-box {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.body-left {
+    padding: 10px;
+    /*border: 1px solid #28b487;*/
+    max-width: 240px;
+}
+
+.body-right {
+    padding: 10px 80px;
+    /*border: 1px solid #28b487;*/
+}
+
+.provider-body-sub-2 {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px;
+    /*grid-template-columns: calc((100% - 40px) / 3);*/
+
+}
+
+.review-box {
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.review-box-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.review-box-user-info img{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+#review-date {
+    font-size: small;
+}
+
+/************************* Review ***************************/
+
+.create-review-content {
+    min-height: 500px;
+    height: calc(100% - 63px - 213px);
+    padding: 40px;
+}
+
+.create-review-inner {
+    width: 60%;
+    min-width: 400px;
+    margin: 0 auto;
+}
+/************************* Time Purchased & sold ***************************/
+
+.time-purchased-content {
+    padding: 20px 60px 60px 60px;
+    min-height: calc(100% - 126px - 213px);
+}
+
+.time-purchased-content img {
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+}
+
+.time-purchased-content .box {
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.12), 0 2px 3px -1px rgba(0,0,0,.2);
+    border-radius: 5px;
+    /*display: flex;*/
+    width: 90%;
+    margin: 0 auto;
+}
+
+.time-purchased-content .box-left {
+    color: white;
+    min-height: 180px;
+    text-align: center;
+    padding: 20px;
+    background-image: linear-gradient(to right bottom, #68e854, #28b487);
+}
+
+.time-purchased-content .box-middle {
+    padding: 20px;
+}
+
+.time-purchased-content .box-right {
+    padding: 20px 0;
+    margin: 0;
+}
+
+.time-purchased-content .row {
+    padding: 0;
+}
+
+.time-purchased-content a {
+    text-decoration: none;
+    color: white;
+}
+
+.dropdown-menu a {
+    color: gray !important;
+}
+
+#dpd::after {
+    content: none;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.sold-info {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.purchased-info {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/************************* Selling ***************************/
+
+.selling-content {
+    padding: 20px 60px 60px 60px;
+    min-height: calc(100% - 126px - 213px);
+}
+
+.selling-content .box {
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.12), 0 2px 3px -1px rgba(0,0,0,.2);
+    border-radius: 5px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.selling-content .box-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.selling-content .far:hover {
+    cursor: pointer;
+}
+
+.selling-info {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/************************* Edit Appointment ***************************/
+.update-appointment {
+    background: #f7f7f7;
+    padding: 60px;
+}
+
+.update-appointment-inner {
+    width: 70%;
+    background: white;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.12), 0 2px 3px -1px rgba(0,0,0,.2);
+    border-radius: 5px;
+}

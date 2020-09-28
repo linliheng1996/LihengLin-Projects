@@ -1,0 +1,39 @@
+extends base
+
+block content
+    .create-review-content
+        .create-review-inner
+            h2.green= `Please let us know how was the appointment with ${provider.firstName} ${provider.lastName}.`
+            form.form-create-review.clearfix
+                input#providerId(type='hidden', value=`${provider._id}`)
+                .form-group
+                    label(for='review') Feedback
+                    textarea#review.form-control(rows='6', required, name='review')
+                .form-group.mb-0
+                    label.mr-2(for='rating') Rating:
+                    input#rating.form-control(type='hidden', name='rating')
+
+                    .far.fa-star.ratingStar.yellow
+                    .far.fa-star.ratingStar.yellow
+                    .far.fa-star.ratingStar.yellow
+                    .far.fa-star.ratingStar.yellow
+                    .far.fa-star.ratingStar.yellow
+                .form-group
+                    button.btn.btn-primary.float-right Submit
+
+
+    script.
+        $(".ratingStar").click(function(){
+            var cur = $(this).index(".ratingStar");
+            $("#rating").val(cur + 1);
+            for(var i = 0; i < 5; i++){
+                if(i <= cur) {
+                    $(".ratingStar:eq("+ i +")").removeClass("far");
+                    $(".ratingStar:eq("+ i +")").addClass("fas");
+                }
+                else{
+                    $(".ratingStar:eq(" + i + ")").removeClass("fas");
+                    $(".ratingStar:eq(" + i + ")").addClass("far");
+                }
+            }
+        });

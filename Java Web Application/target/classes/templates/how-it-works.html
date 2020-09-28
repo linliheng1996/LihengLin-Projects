@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title>Features</title>
+</head>
+<body>
+    <!--navigation bar-->
+
+    <nav th:replace="_fragments :: navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand brand-text" href="index.html" th:href="@{/}">TrojanMD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="how-it-works.html" th:href="@{/how-it-works}">HOW IT WORKS?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="membership.html" th:href="@{/membership}">MEMBERSHIP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact-us.html" th:href="@{/contact-us}">CONTACT US</a>
+                </li>
+            </ul>
+        </div>
+        <div id = "nav-buttons-div">
+            <a href="user/user-login.html" th:href="@{/login}">
+                <button class="btn btn-sm btn-outline-secondary" type="button" style="color:#FFFFFF" >Sign in</button>
+            </a>
+            <a href="user/user-signup.html" th:href="@{/signup}">
+                <button class="btn btn-sm btn-outline-secondary join-now-btn" type="button">Join Now</button>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid hiw-title"></div>
+
+    <div class="hiw-title-inner">
+        <h1 class="animate__animated animate__zoomIn" style="color:#42A5F5; font-weight: 800">Using TrojanMD is as easy as one, two, three.</h1>
+        <h4 style="width: 80%; margin:0 auto">You can’t plan when you’ll get sick, but you can take your doctor with you
+            and get the care you need anywhere.</h4>
+    </div>
+
+    <div class="container-fluid hiw-steps">
+
+        <div class="row">
+            <div class="col-lg-4 flex">
+                <div class="steps-box">
+                    <h1 style="color:#42A5F5; font-weight: 600">Step 1</h1>
+                    <h2>Register for free</h2>
+                    <p>Setting up your secure account only takes about 15 minutes.
+                        Then, you’re ready for your visit. Don’t forget to download
+                        our app and always be prepared.</p>
+                </div>
+
+            </div>
+            <div class="col-lg-4 flex">
+                <div class="steps-box">
+                    <h1 style="color:#42A5F5; font-weight: 600">Step 2</h1>
+                    <h2>Find a doctor</h2>
+                    <p>Search through our network of board-certified doctors and
+                        choose the one that’s right for you. You can wait to see
+                        a doctor right away or schedule your appointment for a
+                        time that works for you.</p>
+                </div>
+
+            </div>
+            <div class="col-lg-4 flex">
+                <div class="steps-box">
+                    <h1 style="color:#42A5F5; font-weight: 600">Step 3</h1>
+                    <h2>Start your visit</h2>
+                    <p>Speak to your doctor online. They’ll go through your symptoms,
+                        recommend a treatment and can even send a prescription to your
+                        nearest pharmacy if you need one.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container what-we-treat-title">
+        <h1 style="color:#42A5F5; font-weight: 600">What we treat</h1>
+        <h4>From medical and therapy to dermatology, our online doctors can help
+            you with more than 50 common conditions.</h4>
+    </div>
+
+    <div class="container-fluid what-we-treat">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="wwt-box">
+                    <h1 style="color:#42A5F5; font-weight: 600">Medical</h1>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <ul>
+                                <li>Common cold</li>
+                                <li>Allergies</li>
+                                <li>Constipation</li>
+                                <li>Cough</li>
+                                <li>Diarrhea</li>
+                                <li>Ear Problems</li>
+                                <li>Fever</li>
+                                <li>Flu</li>
+                                <li>Headache</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <ul>
+                                <li>Insect Bites</li>
+                                <li>Nausea</li>
+                                <li>Vomiting</li>
+                                <li>Pink Eye</li>
+                                <li>Rash</li>
+                                <li>Respiratory Problems</li>
+                                <li>Sore throat</li>
+                                <li>And more...</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-6 wwt-img-medical">
+                <div class="">
+<!--                    <img src="../static/images/medical.jpg" alt="">-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid what-we-treat">
+        <div class="row">
+            <div class="col-sm-6 wwt-img-behavior"></div>
+            <div class="col-sm-6">
+                <div class="wwt-box">
+                    <h1 style="color:#42A5F5; font-weight: 600">Behavioral Health</h1>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <ul>
+                                <li>Anxiety</li>
+                                <li>Depression</li>
+                                <li>Bipolar</li>
+                                <li>Stress Management</li>
+                                <li>Grief and Loss</li>
+                                <li>LGBTQ support</li>
+                                <li>Trauma & PTSD</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <ul>
+                                <li>Relationship issues</li>
+                                <li>Panic disorders</li>
+                                <li>Addictions</li>
+                                <li>And more…</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid what-we-treat">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="wwt-box">
+                    <h1 style="color:#42A5F5; font-weight: 600">Dermatology</h1>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <ul>
+                                <li>Acne</li>
+                                <li>Rash</li>
+                                <li>Spots</li>
+                                <li>Eczema</li>
+                                <li>Warts</li>
+                                <li>Rosacea</li>
+                                <li>Psoriasis</li>
+                                <li>Hair follicles</li>
+                                <li>Insect bites</li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <ul>
+                                <li>Alopecia</li>
+                                <li>Cold sores</li>
+                                <li>Skin cuts</li>
+                                <li>Abrasions</li>
+                                <li>Moles</li>
+                                <li>Skin infections</li>
+                                <li>Redness</li>
+                                <li>Bruises</li>
+                                <li>And more...</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 wwt-img-dermatology"></div>
+        </div>
+    </div>
+
+<!--    <div class="container-fluid">-->
+<!--        <button type="button" class="btn btn-primary btn-lg" style="margin-top: 10px">Get Started</button>-->
+<!--    </div>-->
+
+
+    <!-- footer -->
+    <div th:replace="_fragments :: footer" class="container-fluid footer">
+        <div class="container pt-60 pb-60">
+            <div class="row">
+                <div class="col-sm-4">
+                    <ul>
+                        <li>
+                            <h5>About Us</h5>
+                        </li>
+                        <li class="page-item">
+                            <a href="index.html" th:href="@{/}">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Mission & Team</a>
+                        </li>
+                        <li>
+                            <a href="#">Technology & Platform</a>
+                        </li>
+                        <li>
+                            <a href="#">Partners</a>
+                        </li>
+                        <li>
+                            <a href="#">Blogs</a>
+                        </li>
+                        <li>
+                            <a href="contact-us.html" th:href="@{/contact-us}">Press</a>
+                        </li>
+                        <li>
+                            <a href="#">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <ul>
+                        <li>
+                            <h5>Support</h5>
+                        </li>
+                        <li>
+                            <a href="user/user-login.html" th:href="@{/login}">Sign In</a>
+                        </li>
+                        <li>
+                            <a href="contact-us.html" th:href="@{/contact-us}">Contact Us</a>
+                        </li>
+                    </ul>
+
+                    <ul style="padding-top:16px">
+                        <li>
+                            <h5>
+                                Special Programs
+                            </h5>
+                        </li>
+                        <li>
+                            <a href="#">Employers</a>
+                        </li>
+                        <li>
+                            <a href="#">Functional Medicine</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div>
+                        <h5>Interested, but still not sure?</h5>
+                    </div>
+                    <div>
+                        <p>Subscribe to our FREE email newsletter and discover how you can save money (insurance & co-pays), benefit from a real relationship with a doctor, and take care of your health (for you & your family).</p>
+                    </div>
+                    <div class="input-group m-3" >
+                        <input type="text" class="" placeholder="Email">
+                        <button class="btn btn-outline-secondary subscribe-button" type="button" style="background: #a9a9a9;color:#FFFFFF !important;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--sub-footer-->
+    <div class="container-fluid sub-footer">
+        <div class="row">
+            <div class="col-sm-6">
+                <div style="margin:5px auto">
+                    <p>This website is for academic purpose only.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <p>Terms of Use</p>
+            </div>
+            <div class="col-sm-2">
+                <p>Privacy Policy</p>
+            </div>
+            <div class="col-sm-2">
+                <i class="fab fa-facebook-square "></i>
+                <i class="fab fa-linkedin-in "></i>
+                <i class="fab fa-twitter "></i>
+                <i class="fab fa-instagram "></i>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

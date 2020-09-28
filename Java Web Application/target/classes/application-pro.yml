@@ -1,0 +1,26 @@
+spring:
+  thymeleaf:
+    mode: HTML
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://trojanmd-db.coes9xhmfq5j.us-east-1.rds.amazonaws.com:3306/trojanmd?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: admin
+    password: trojanmd1234
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+logging:
+  level:
+    root: warn
+    com.trojanmd: info
+    hibernate: error
+  file:
+    name: log/trojanmd-pro.log
+
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: PT3H

@@ -1,0 +1,22 @@
+extends base
+
+block content
+    .update-appointment
+        .update-appointment-inner.clearfix
+            form.form-update-appointment
+                input#appId(type='hidden', value= appointment._id)
+                .form-group
+                    label(for='title') Title
+                    input#title.form-control(type='text', required, name='title', value= appointment.title)
+                .form-group
+                    label(for='duration') Duration (hour)
+                    input#duration.form-control(type='number', required, name='duration', value= appointment.duration)
+                .form-group
+                    label(for='price') Price
+                    input#price.form-control(type='number', required, name='price', value= appointment.price)
+                .form-group
+                    label(for='description') Description
+                    textarea#description.form-control(rows='6', required, name='description')= appointment.description
+                .form-group
+                    button.btn.btn-primary.float-right(type="submit") Update
+                    a.btn.btn-secondary.float-right.mr-2(href="/selling") cancel

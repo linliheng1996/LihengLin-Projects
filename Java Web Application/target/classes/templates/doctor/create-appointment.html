@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="doctor/_fragments :: head(~{::title})">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/profile.css" th:href="@{/css/profile.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title>Create Appointment</title>
+
+</head>
+<body>
+
+<nav th:replace="doctor/_fragments :: navbar" class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand brand-text" href="../index.html" th:href="@{/}">TrojanMD</a>
+
+    <div class="dropdown">
+        <a class=" dropdown-toggle" href="#" style="text-decoration: none; color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Jason Doe
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="../user/user-login.html">Sign Out</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Vertical navbar -->
+<div th:replace="doctor/_fragments :: vertical-navbar(3)" class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+            <img src="https://ui-avatars.com/api/?name=Jason+Doe&background=0D8ABC&color=fff&font-size=0.55" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0">Jason Doe</h4>
+            </div>
+        </div>
+    </div>
+
+    <!--    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>-->
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="home.html" class="nav-link font-italic">
+                Home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="profile.html" class="nav-link font-italic">
+                My Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="create-appointment.html" class="nav-link font-italic">
+                Create Appointment
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="my-patient.html" class="nav-link font-italic">
+                My Patients
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- End vertical navbar -->
+
+
+<div class="container-fluid page-content pt-2" id="content">
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white shadow-sm mb-2"><i class="fa fa-bars"></i><small class="text-uppercase font-weight-bold"></small></button>
+
+    <div class="content-wrapper">
+        <h3>Create Appointment</h3>
+
+<!--        <div class="make-appointment">-->
+<!--            <form th:action="@{/user/confirm-appointment}" method="get">-->
+<!--                <h6>Available Appointment Time</h6>-->
+<!--                <input type="date" class="date-input" placeholder="yyyy-mm-dd">-->
+<!--                <div class="time-slots"></div>-->
+<!--                <input type="hidden" class="selected-slot" name="selectedSlot">-->
+<!--                <input type="hidden" class="doctor-id" th:value="${doc.id}" name="doctorId">-->
+<!--            </form>-->
+<!--        </div>-->
+
+        <form th:action="@{/doctor/create-appointment}" method="post" action="#">
+            <input type="date" class="date-input" name="date" placeholder="yyyy-mm-dd" th:required="required" required>
+            <input type="hidden" class="selected-slot" name="selectedSlot">
+            <input type="hidden" class="doctor-id" th:value="${session.loggedInUser.id}" name="doctorId">
+            <!--                <input type="checkbox" name="beginTime" value="10:00:00">10:00<br>-->
+<!--                <input type="checkbox" name="beginTime" value="10:30:00">10:30<br>-->
+<!--                <input type="checkbox" name="beginTime" value="11:00:00">11:00<br>-->
+<!--                <input type="checkbox" name="beginTime" value="11:30:00">11:30<br>-->
+            <div class="time-slots"></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<script>
+    $(function() {
+        // Sidebar toggle behavior
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar, #content').toggleClass('active');
+        });
+    });
+    $(".date-input").change(function(){
+        var date = $(this).val();
+        var slots = $(".time-slots");
+        var docId = $(".doctor-id").val();
+        console.log(JSON.stringify({curDate:date,docId:docId}));
+        // $(this).next(".date-display").text(date);
+        slots.empty();
+        $.ajax({
+            type:"POST",
+            url:"/doctor/create-appointment/date",
+            datatype:"json",
+            contentType:"application/json",
+            data: JSON.stringify({curDate:date,docId:docId}),
+            cache:false,
+            success:function(data){
+                console.log(data);
+
+                // slots.empty();
+                if(data.length === 0){
+                    slots.text("Sorry, no appointment time available at selected date.")
+                }
+                var slot;
+                for(var i=0; i<data.length; i++){
+                    slot = document.createElement("div");
+                    slot.className = "form-check form-check-inline";
+                    var input = document.createElement("input");
+                    input.className = "form-check-input";
+                    input.type = "checkbox";
+                    input.id = "checkbox" + i;
+                    input.value = data[i];
+                    input.name = "beginTime";
+                    var label = document.createElement("label");
+                    label.className = "form-check-label";
+                    label.htmlFor = "checkbox" + i;
+                    label.textContent = data[i];
+                    slot.append(input);
+                    slot.append(label);
+
+                    $(".time-slots").append(slot);
+                }
+
+            },
+            error:function(e){
+                // alert("error");
+            }
+        });
+
+    });
+</script>
+
+
+
+</body>
+</html>

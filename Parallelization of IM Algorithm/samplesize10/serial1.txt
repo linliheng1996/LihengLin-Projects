@@ -1,0 +1,12 @@
+global max node = 535, max influence = 4003
+global max node = 1480, max influence = 4008.7
+global max node = 2783, max influence = 4008.6
+global max node = 277, max influence = 4008.9
+global max node = 1138, max influence = 4010
+global max node = 3953, max influence = 4006.3
+global max node = 4273, max influence = 4011.6
+global max node = 2939, max influence = 4009.5
+global max node = 1160, max influence = 4006.4
+global max node = 325, max influence = 4010.9
+Seed: 3953 1160 4273 1138 2939 277 2783 325 1480 535 
+Execution time = 6341.411317 sec

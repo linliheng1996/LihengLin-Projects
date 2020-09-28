@@ -1,0 +1,33 @@
+extends account
+
+block sub-content
+    .settings
+        // does not use the api
+        //form.form.form-profile(action='/submit-profile' method='POST' enctype='multipart/form-data')
+
+        // use the api
+        form.form-basic-info.clearfix
+            .form-group
+                label(for='email') Email
+                input#email.form-control(type='email', name='email', value= user.email, required,aria-describedby='emailHelp')
+            br
+            .form-group
+                img#userImage(src=`img/users/${user.photo}`, alt='User photo')
+                input#photo(type='file', accept='image/*', name='photo')
+                label#uploadNewPhoto(for='photo') Upload New Photo
+            .form-group
+                button.btn.btn-primary.float-right Save
+        .line &nbsp;
+        h3 Password Change
+        form.form-pw-change
+            .form-group
+                label(for='passwordCurrent') Current Password
+                input#passwordCurrent.form-control(type='password', name='passwordCurrent')
+            .form-group
+                label(for='newPassword') New Password
+                input#newPassword.form-control(type='password', name='password')
+            .form-group
+                label(for='passwordConfirm') Confirm New Password
+                input#passwordConfirm.form-control(type='password', name='passwordConfirm')
+            .form-group
+                button.btn.btn-primary.btn-change-password.float-right Change Password

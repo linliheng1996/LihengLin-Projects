@@ -1,0 +1,21 @@
+extends base
+
+block content
+    .login-content
+        .login-inner
+            div
+                h2.green Sign in to get started.
+            // Main Content
+            form.form-login
+                //input#userType(type="hidden" name="userType" value="user")
+                .form-group
+                    label(for="email") Email
+                    input#email.form-control(type="email" name="email" aria-describedby="emailHelp" required)
+                .form-group
+                    label(for="password") Password
+                    input#password.form-control(type="password" name="password" required)
+                .form-group
+                    button.btn.btn-primary.float-right Log In
+                a.gray(href="/forgot-password") Forgot your Password?
+                br
+                a.green(href="/signup") Not a member? Sign up for free.

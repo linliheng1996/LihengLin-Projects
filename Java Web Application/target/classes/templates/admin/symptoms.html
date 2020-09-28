@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/admin.css" th:href="@{/css/admin.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title>Admin Symptoms</title>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand brand-text" href="../index.html" th:href="@{/admin/symptoms}">TrojanMD</a>
+
+    <a class="sign-out" href="../user/user-login.html" th:href="@{/user/logout}">Sign Out</a>
+
+</nav>
+
+<!-- Vertical navbar -->
+<div th:replace="admin/_fragments :: vertical-navbar(3)" class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+            <img src="https://ui-avatars.com/api/?name=Administrator&background=0D8ABC&color=fff&font-size=0.55" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0">Administrator</h4>
+            </div>
+        </div>
+    </div>
+    <!--    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Search</p>-->
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="diseases.html" class="nav-link text-dark font-italic">
+                Diseases
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="bodySystems.html" class="nav-link text-dark font-italic">
+                Body Systems
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="symptoms.html" class="nav-link font-italic">
+                Symptoms
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="bodyParts.html" class="nav-link text-dark font-italic">
+                Body Parts
+            </a>
+        </li>
+    </ul>
+    <br>
+</div>
+<!-- End vertical navbar -->
+
+<div class="container-fluid page-content pt-2" id="content">
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white shadow-sm mb-2"><i class="fa fa-bars"></i><small class="text-uppercase font-weight-bold"></small></button>
+    <div th:unless="${#strings.isEmpty(successMessage)}" th:text="${successMessage}" class="alert alert-success" role="alert">
+        Success!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div th:unless="${#strings.isEmpty(errorMessage)}" th:text="${errorMessage}" class="alert alert-danger" role="alert">
+        Fail!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="content-wrapper admin-symptom clearfix">
+        <table>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Body Part</th>
+                <th>Created</th>
+                <th>Last Update</th>
+                <th>Status</th>
+                <th style="width: 150px">Operation</th>
+            </tr>
+            <tr th:each="symptom, iterStat : ${page.content}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${symptom.name}">Common Cold</td>
+                <td th:text="${symptom.getBodyPart().getName()}">Head</td>
+                <td th:text="${#dates.format(symptom.createTime,'yyyy/MM/dd HH:mm')}">2020/07/17 10:00</td>
+                <td th:text="${#dates.format(symptom.updateTime,'yyyy/MM/dd HH:mm')}">2020/07/17 10:00</td>
+                <td th:text="${symptom.published} ? Published : Draft">Draft</td>
+                <td>
+                    <a href="symptom-input.html" th:href="@{/admin/symptoms/{id}/input(id=${symptom.id})}">
+                        <button type="button" class="btn btn-outline-primary btn-sm">Edit</button>
+                    </a>
+                    <a href="" th:href="@{/admin/symptoms/{id}/delete(id=${symptom.id})}">
+                        <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <div class="mt-2">
+            <a th:href="@{/admin/symptoms(page=${page.number}-1)}" th:unless="${page.first}">
+                <button type="button" class="btn btn-outline-secondary btn-sm">Prev</button>
+            </a>
+            <a th:href="@{/admin/symptoms(page=${page.number}+1)}" th:unless="${page.last}">
+                <button type="button" class="btn btn-outline-secondary btn-sm">Next</button>
+            </a>
+
+            <a th:href="@{/admin/symptom-input}" href="symptom-input.html" style="float: right;">
+                <button type="button" class="btn btn-outline-primary btn-sm">Create New</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<script>
+    $(function() {
+        // Sidebar toggle behavior
+        $('#sidebarCollapse').click(function() {
+            $('#sidebar, #content').toggleClass('active');
+        });
+    });
+
+    const alert = $('.alert');
+    setTimeout(function () {
+        alert.hide();
+    }, 3000);
+</script>
+</body>
+</html>

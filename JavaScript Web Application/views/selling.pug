@@ -1,0 +1,33 @@
+extends base
+
+block content
+    nav.navbar.navbar-expand-lg.sub-nav.navbar-light(style="background-color: white")
+        .navbar-nav
+            a.nav-link(href="/account") My Account
+            a.nav-link(href="/time-purchased") Time Purchased
+            a.nav-link(href="/time-sold") Time Sold
+            a.nav-link.active(href="/selling") Selling
+            a.nav-link(href="/market") Marketplace
+    .container.selling-content
+        .box-container
+            if(appointments.length !== 0)
+                .selling-info.mb-3
+                    h2.green= `${appointments.length} Listed`
+                each appointment in appointments
+                    .box.mb-4.clearfix
+                        .box-header
+                            h4.green= appointment.title
+                            .box-header-buttons
+                                a.far.fa-edit.mr-1.gray(href=`/appointments/${appointment._id}`)
+                                btn.far.fa-trash-alt.gray#deleteAppointment(data-app-id=`${appointment._id}`)
+
+                        p= appointment.description
+                        h6.float-left.pb-1.gray=`$${appointment.price} /`
+                        h6.float-left.pb-1.gray=`${appointment.duration}h`
+
+
+            else
+                h1.green You are not selling anything.
+                h1.green Go sell some time!
+                br
+                a.btn.btn-primary(href="/sell-time") Get Started

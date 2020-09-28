@@ -1,0 +1,19 @@
+extends account
+
+block sub-content
+    .create-appointment
+        form.form-create-appointment
+            .form-group
+                label(for='title') Title
+                input#title.form-control(type='text', required, name='title')
+            .form-group
+                label(for='duration') Duration (hour)
+                input#duration.form-control(type='number', required, name='duration')
+            .form-group
+                label(for='price') Price
+                input#price.form-control(type='number', required, name='price')
+            .form-group
+                label(for='description') Description
+                textarea#description.form-control(rows='6', required, name='description')
+            .form-group
+                button.btn.btn-primary.float-right Create

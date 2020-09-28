@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="doctor/_fragments :: head(~{::title})">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/profile.css" th:href="@{/css/profile.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title>My Patients</title>
+
+</head>
+<body>
+
+<nav th:replace="doctor/_fragments :: navbar" class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand brand-text" href="../index.html" th:href="@{/}">TrojanMD</a>
+
+    <div class="dropdown">
+        <a class=" dropdown-toggle" href="#" style="text-decoration: none; color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Jason Doe
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="../user/user-login.html">Sign Out</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Vertical navbar -->
+<div th:replace="doctor/_fragments :: vertical-navbar(5)" class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+            <img src="https://ui-avatars.com/api/?name=Jason+Doe&background=0D8ABC&color=fff&font-size=0.55" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0">Jason Doe</h4>
+            </div>
+        </div>
+    </div>
+
+    <!--    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>-->
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="home.html" class="nav-link font-italic">
+                Home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="profile.html" class="nav-link font-italic">
+                My Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="create-appointment.html" class="nav-link font-italic">
+                Create Appointment
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="my-patient.html" class="nav-link font-italic">
+                My Patients
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="my-appointment.html" class="nav-link font-italic">
+                My Appointments
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- End vertical navbar -->
+
+<div class="container-fluid page-content pt-2" id="content">
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white shadow-sm mb-2"><i class="fa fa-bars"></i><small class="text-uppercase font-weight-bold"></small></button>
+
+        <div class="content-wrapper my-appointment clearfix">
+            <h3>My Appointments</h3>
+            <table th:unless="${page == null || page.isEmpty()}">
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Patient</th>
+                    <th>Operation</th>
+                </tr>
+                <tr th:each="appointment : ${page.content}">
+                    <td th:text="${appointment.getDate()}"></td>
+                    <td th:text="${appointment.getBeginTime()}"></td>
+                    <td th:text="${appointment.getUser()}==null ? '' : ${appointment.getUser().fname} + ' ' + ${appointment.getUser().lname}"></td>
+                    <td>
+                        <a th:href="@{/doctor/delete-appointment/{id}(id=${appointment.id})}" href="#">
+                            <button type="button" class="btn btn-primary btn-sm">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <div th:unless="${page == null || page.isEmpty()}" class="mt-2">
+                <a th:href="@{/doctor/my-appointment(page=${page.number}-1)}" th:unless="${page.first}">
+                    <button type="button" class="btn btn-outline-secondary btn-sm">Prev</button>
+                </a>
+                <a th:href="@{/doctor/my-appointment(page=${page.number}+1)}" th:unless="${page.last}">
+                    <button type="button" class="btn btn-outline-secondary btn-sm">Next</button>
+                </a>
+            </div>
+
+
+
+            <br>
+            <div class="clearfix" th:if="${appointments == null || appointments.isEmpty()}">
+                <h5 style="display: inline-block">No scheduled appointment.</h5>
+            </div>
+
+        </div>
+
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

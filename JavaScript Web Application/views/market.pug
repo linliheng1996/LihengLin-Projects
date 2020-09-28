@@ -1,0 +1,125 @@
+extends base
+
+block content
+    if (user != null)
+        .market-top
+            nav.navbar.navbar-expand-lg.sub-nav.navbar-light(style="background-color: white;")
+                .navbar-nav.float-right
+                    a.nav-link(href="/account") My Account
+                    a.nav-link(href="/time-purchased") Time Purchased
+                    a.nav-link(href="/time-sold") Time Sold
+                    a.nav-link(href="/selling") Selling
+                    a.nav-link.active(href="/market") Marketplace
+            .filter-button.clearfix
+                span.gray Filter
+                .fas.fa-sliders-h.fa-lg.gray.mt-2.ml-1(data-toggle="collapse", data-target="#advance", aria-expanded="false", aria-controls="advance")
+
+    .filter.collapse#advance
+        form.form-filter.form-inline.clearfix
+            label.my-1.mr-2(for="sortBy") Sort:
+            select#sortBy.custom-select.my-1.mr-4
+                option(value="-ratingsAverage") Rating (High to Low)
+                option(value="ratingsAverage") Rating (Low to High)
+                option(value="-age") Age (High to Low)
+                option(value="age") Age (Low to High)
+                option(value="") -
+            label.mr-2 Rating:
+            .form-check.form-check-inline
+                input#inlineRadio1.form-check-input(type="radio" name="ratingFilter" value="4")
+                label.form-check-label(for="inlineRadio1") 4.0+
+            .form-check.form-check-inline
+                input#inlineRadio2.form-check-input(type="radio" name="ratingFilter" value="3")
+                label.form-check-label(for="inlineRadio2") 3.0+
+            .form-check.form-check-inline
+                input#inlineRadio3.form-check-input(type="radio" name="ratingFilter" value="2")
+                label.form-check-label(for="inlineRadio3") 2.0+
+            .form-check.form-check-inline
+                input#inlineRadio4.form-check-input(type="radio" name="ratingFilter" value="1")
+                label.form-check-label(for="inlineRadio4") All
+            .form-group
+                label(for='majorCategory').mr-2 Area Of Study:
+                select#majorCategory.form-control.mr-4(required, name="majorCategory")
+                    option(value = '-') All
+                    option(value= 'Arts and Humanities') Arts and Humanities
+                    option(value = 'Business') Business
+                    option(value = 'Health and Medicine') Health and Medicine
+                    option(value = 'Multi-/Interdisciplinary Studies') Multi-/Interdisciplinary Studies
+                    option(value = 'Public and Social Services') Public and Social Services
+                    option(value = 'Science, Math and Technology') Science, Math and Technology
+                    option(value = 'Social Science') Social Science
+                    option(value = 'Trades and Personal Service') Trades and Personal Service
+                    option(value = 'Other') Other
+
+            .form-group
+                label.mr-2(for='yearOfStudy') Year of Study:
+                select#yearOfStudy.form-control.mr-4(required, name="yearOfStudy")
+                    option(value = '-') All
+                    option(value = 'Freshman') Freshman
+                    option(value = 'Sophomore') Sophomore
+                    option(value = 'Junior') Junior
+                    option(value = 'Senior') Senior
+                    option(value = 'Master') Master
+                    option(value = 'PhD') PhD
+
+            .form-group
+                button.btn.btn-primary.btn-sm#apply Apply
+
+    .container.providers-content
+        if (user == null)
+            h2.green.mt-5 Please log in to explore all functions.
+        .card-container
+            each provider in providers
+                - var loggedInUser = (user == null) ? '' : user.email;
+                if provider.email !== loggedInUser
+                    .card
+                        .card-header
+                            .far.fa-bookmark.bookmark.float-right
+                            img(src=`/img/users/${provider.photo}`)
+                            h4= `${provider.firstName} ${provider.lastName}`
+
+                        .card-body
+                            .row.body-top
+                                .col-sm-1.p-0
+                                    .fas.fa-graduation-cap.green
+                                .col-sm-5.pr-0.pl-1
+                                    p.mb-1= `${provider.major} `
+                                .col-sm-1.p-0
+                                    .fas.fa-school.green
+                                .col-sm-5.pr-0.pl-1
+                                    p.mb-1= `${provider.majorCategory} `
+
+                            .row.body-top
+                                .col-sm-1.p-0
+                                    .fas.fa-book.green
+                                .col-sm-5.pr-0.pl-1
+                                    p.mb-1= provider.yearOfStudy
+                                .col-sm-1.p-0
+                                    .fas.fa-user.green
+                                .col-sm-5.pr-0.pl-1
+                                    p.mb-1= `${provider.age} years old`
+                            .line &nbsp;
+                            .row
+                                p= provider.description
+                        .card-footer
+                            .stars
+                                - var i = 0;
+                                while i < Math.floor(provider.ratingsAverage)
+                                    .fas.fa-star.yellow
+                                    - i++;
+                                while i < 5
+                                    .far.fa-star.yellow
+                                    - i++
+                            .ratingScore
+                                .rating
+                                    p= `${provider.ratingsAverage}${(provider.ratingsAverage*10)%10 === 0 ? '.0' : ''} (${provider.ratingsQuantity} ${provider.ratingsQuantity > 1 ? 'reviews' : 'review'})`
+                            .detail-button
+                                if(user != null)
+                                    a.btn.btn-primary.float-right(href=`/users/${provider._id}`) Details
+                                else
+                                    a.btn.btn-primary.float-right(href=`/login`) Details
+    script.
+        $(".bookmark").click(function(){
+            $(this).removeClass("far");
+            $(this).addClass("fas");
+            $(this).addClass("yellow");
+        });

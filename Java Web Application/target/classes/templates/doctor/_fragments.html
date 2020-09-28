@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head th:fragment="head(title)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/profile.css" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title th:replace="${title}">My Profile</title>
+</head>
+<body>
+
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand brand-text" href="../index.html" th:href="@{/}">TrojanMD</a>
+
+        <div class="dropdown">
+            <a th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}" class=" dropdown-toggle" href="#" style="text-decoration: none; color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jason Doe
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="doctor-login.html" th:href="@{/doctor/logout}">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Vertical navbar -->
+    <div th:fragment="vertical-navbar(n)" class="vertical-nav bg-white" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media d-flex align-items-center">
+                <img th:src="@{https://ui-avatars.com/api/(name=${session.loggedInUser.getFname()}+' '+${session.loggedInUser.getLname()}, background='0D8ABC', color='fff')}" src="https://ui-avatars.com/api/?name=Jason+Doe&background=0D8ABC&color=fff" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                <div class="media-body">
+                    <h4 th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}" class="m-0">Jason Doe</h4>
+                </div>
+            </div>
+        </div>
+
+<!--        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>-->
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="home.html" th:href="@{/doctor/home}" class="nav-link font-italic" th:classappend="${n==1} ? 'bg-light' : 'text-dark'">
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html" th:href="@{/doctor/profile}" class="nav-link font-italic" th:classappend="${n==2} ? 'bg-light' : 'text-dark'">
+                    My Profile
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="create-appointment.html" th:href="@{/doctor/create-appointment}" class="nav-link font-italic" th:classappend="${n==3} ? 'bg-light' : 'text-dark'">
+                    Create Appointment
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="my-patient.html" th:href="@{/doctor/my-patient}" class="nav-link font-italic" th:classappend="${n==4} ? 'bg-light' : 'text-dark'">
+                    My Patients
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="my-appointment.html" th:href="@{/doctor/my-appointment}" class="nav-link font-italic" th:classappend="${n==5} ? 'bg-light' : 'text-dark'">
+                    My Appointments
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End vertical navbar -->
+
+</body>
+</html>

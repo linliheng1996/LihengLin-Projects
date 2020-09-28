@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/admin.css" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title>Symptom Input</title>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand brand-text" href="../index.html" th:href="@{/admin/symptoms}">TrojanMD</a>
+
+    <a class="sign-out" href="../user/user-login.html" th:href="@{/user/logout}">Sign Out</a>
+
+</nav>
+
+<!-- Vertical navbar -->
+<div th:replace="admin/_fragments :: vertical-navbar(3)" class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+            <img src="https://ui-avatars.com/api/?name=Administrator&background=0D8ABC&color=fff&font-size=0.55" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0">Administrator</h4>
+            </div>
+        </div>
+    </div>
+    <!--    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Search</p>-->
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="diseases.html" class="nav-link text-dark font-italic">
+                Diseases
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="bodySystems.html" class="nav-link text-dark font-italic">
+                Body Systems
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="symptoms.html" class="nav-link font-italic">
+                Symptoms
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="bodyParts.html" class="nav-link text-dark font-italic">
+                Body Parts
+            </a>
+        </li>
+    </ul>
+    <br>
+</div>
+<!-- End vertical navbar -->
+
+<div class="container-fluid page-content pt-2" id="content">
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white shadow-sm mb-2"><i class="fa fa-bars"></i><small class="text-uppercase font-weight-bold"></small></button>
+    <div th:unless="${#strings.isEmpty(errorMessage)}" th:text="${errorMessage}" class="alert alert-danger" role="alert">
+        Fail!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="content-wrapper admin-create-symptom clearfix">
+            <form id="symptom-form" action="#" th:action="@{/admin/symptom-add}" method="post">
+                <input type="hidden" name="published" th:value="${symptom.published}">
+                <input type="hidden" name="id" th:value="${symptom.id}">
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Symptom Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputName" name="name" th:value="${symptom.name}" th:required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Body Part</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="bodyPartName">
+                            <option th:each="bp : ${bodyParts}" th:value="${bp.name}" th:selected="${bp} eq ${symptom.bodyPart}" th:text="${bp.name}">Common</option>
+                            <!--                        <option value="Common" th:selected="*{bodyPart=='Common'}">Common</option>-->
+                            <!--                        <option value="Child" th:selected="*{bodyPart=='Child'}">Child</option>-->
+                            <!--                        <option value="Male-specific" th:selected="*{bodyPart=='Male-specific'}">Male-specific</option>-->
+                            <!--                        <option value="Female-specific" th:selected="*{bodyPart=='Female-specific'}">Female-specific</option>-->
+                            <!--                        <option value="Head & Neck" th:selected="*{bodyPart=='Head & Neck'}">Head & Neck</option>-->
+                            <!--                        <option value="Chest & Back" th:selected="*{bodyPart=='Chest & Back'}">Chest & Back</option>-->
+                            <!--                        <option value="Abdomen" th:selected="*{bodyPart=='Abdomen'}">Abdomen</option>-->
+                            <!--                        <option value="Arms & Legs" th:selected="*{bodyPart=='Arms & Legs'}">Arms & Legs</option>-->
+                            <!--                        <option value="Skin" th:selected="*{bodyPart=='Skin'}">Skin</option>-->
+                            <!--                        <option value="Other" th:selected="*{bodyPart=='Other'}">Other</option>-->
+
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Photo required</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" name="requiresPhoto">
+                            <option th:value="true" th:selected="${symptom.requiresPhoto}">Yes</option>
+                            <option th:value="false" th:selected="${!symptom.requiresPhoto}" selected>No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-8">
+                        <div id="md-content1">
+                            <textarea name="md-content1" style="display: none" th:text="${symptom.description}"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Causes</label>
+                    <div class="col-sm-8">
+                        <div id="md-content2">
+                            <textarea name="md-content2" style="display: none" th:text="${symptom.cause}"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Treatment</label>
+                    <div class="col-sm-8">
+                        <div id="md-content3">
+                            <textarea name="md-content3" style="display: none" th:text="${symptom.treatment}"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Related Diseases</label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" multiple name="diseaseIds" th:required="required" required>
+                            <option th:each="ds : ${diseases}" th:value="${ds.id}" th:selected="${symptom.getDiseases().contains(ds)}" th:text="${ds.name}"></option>
+                        </select>
+                    </div>
+                </div>
+<!--                <div>-->
+<!--                    <p th:text="${symptom.getDiseases().get(0).getName()}"></p>-->
+<!--                </div>-->
+                <div class="row">
+                    <div class="col-sm-11">
+                        <button type="button" class="btn btn-primary" id="submit-btn" style="float: right;">Submit</button>
+                        <button type="button" class="btn btn-dark" id="save-btn" style="float: right; margin-right: 6px;">Save</button>
+                        <button type="button" class="btn btn-secondary" style="float: right; margin-right: 6px;" onclick="window.history.go(-1)">Back</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+<script>
+    var contentEditor1, contentEditor2, contentEditor3;
+
+    $(function() {
+        contentEditor1 = editormd("md-content1", {
+            width   : "100%",
+            height  : 500,
+            syncScrolling : "single",
+            // path    : "../../static/lib/editormd/lib/",
+            path    : "/lib/editormd/lib/",
+            saveHTMLToTextarea : true
+
+
+        });
+
+        contentEditor2 = editormd("md-content2", {
+            width   : "100%",
+            height  : 500,
+            syncScrolling : "single",
+            path    : "/lib/editormd/lib/",
+            saveHTMLToTextarea : true
+
+        });
+
+        contentEditor3 = editormd("md-content3", {
+            width   : "100%",
+            height  : 500,
+            syncScrolling : "single",
+            path    : "/lib/editormd/lib/",
+            saveHTMLToTextarea : true
+
+        });
+
+    });
+
+    $(function() {
+        // Sidebar toggle behavior
+        $('#sidebarCollapse').click(function() {
+            $('#sidebar, #content').toggleClass('active');
+        });
+    });
+
+    $('#save-btn').click(function () {
+        $('[name="published"]').val(false);
+        $('#symptom-form').submit();
+    });
+
+
+    $('#submit-btn').click(function () {
+        $('[name="published"]').val(true);
+        $('#symptom-form').submit();
+    });
+
+    setTimeout(() => window.scrollTo(0,0),150);
+
+</script>
+</body>
+</html>

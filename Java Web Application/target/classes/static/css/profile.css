@@ -1,0 +1,576 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,700,800|Open+Sans:400,400i,600|Rubik:400,500');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+
+body {
+    /*min-height: 100vh;*/
+    font-family: 'Muli', sans-serif;
+    background: #ffffff;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.text-big {
+    font-size: 3.8rem;
+    font-weight: 600;
+}
+
+.grey {
+    color:grey;
+}
+
+.alert {
+    width: 72%;
+    margin: 0 auto;
+}
+
+/******************* navbar **********************/
+.navbar {
+    background-color: #3296ff;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 62px;
+    z-index: 100;
+}
+
+.navbar-brand {
+    margin-left: 5%;
+    font-size:150%;
+}
+
+.nav-item {
+    margin-left: 1rem;
+}
+
+.navbar-toggler-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.navbarNav {
+    padding-left: 100px;
+}
+
+#nav-buttons-div {
+    position: absolute;
+    right: 10%;
+    top: 15px;
+}
+
+.join-now-btn {
+    margin-left:0.5rem;
+    color:#FFFFFF;
+}
+
+.dropdown {
+    position: absolute;
+    top:16px;
+    right:70px;
+}
+
+.dropdown .line {
+    margin: 3px auto;
+    width: 90%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+
+/******************** footer & sub-footer ************************/
+
+.footer {
+    background: #434343;
+    margin: 0px;
+    text-align: left;
+    bottom:0;
+    color: #D5D5D5;
+    padding: 20px;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer a {
+    color: #D5D5D5;
+}
+
+.footer input {
+    background-color:#434343;
+    border-radius: 3px;
+    border:1px solid #D5D5D5;
+    margin-right: 6px;
+    margin-top: 3px;
+    width: 160px;
+}
+
+.footer h5 {
+    color: #606060;
+}
+
+.subscribe-button {
+    margin-top:3px;
+}
+
+.sub-footer {
+    background: #434343;
+    margin: 0px;
+    text-align: center;
+    bottom:0;
+    color: #606060;
+    padding: 5px;
+}
+
+
+.padding {
+    padding: 2em;
+}
+
+/********************** vertical navbar ************************/
+
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 62px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+}
+
+.username {
+    color: black;
+}
+
+.page-content {
+    width: calc(100% - 17rem);
+    margin-left: 17rem;
+    transition: all 0.4s;
+}
+
+/****************** toggle behavior **********************/
+
+#sidebar.active {
+    margin-left: -17rem;
+}
+
+#content.active {
+    width: 100%;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -17rem;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+        margin: 0;
+    }
+    #content.active {
+        margin-left: 17rem;
+        width: calc(100% - 17rem);
+    }
+}
+
+.separator {
+    margin: 3rem 0;
+    border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+    letter-spacing: 0.1em;
+}
+
+.text-gray {
+    color: #aaa;
+}
+
+/*********************** Responsive ****************************/
+
+@media only screen and (max-width: 1259px) and (min-width: 980px) {
+
+}
+
+@media only screen and (max-width: 777px) and (min-width: 430px) {
+    .content-wrapper {
+        width: 90% !important;
+    }
+
+    .content-wrapper-2 {
+        width: 90% !important;
+    }
+
+    .symptom-content {
+        width: 90% !important;
+        padding: 20px !important;
+    }
+
+    .article-content {
+        width: 90% !important;
+        padding: 20px !important;
+    }
+
+    .doctor-appointment {
+        width: 90% !important;
+    }
+
+    .back-link {
+        display: none;
+    }
+
+    .header-wrapper {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width: 429px) and (min-width: 321px) {
+    .content-wrapper {
+        width: 100% !important;
+    }
+
+    .content-wrapper-2 {
+        width: 100% !important;
+    }
+
+    .symptom-content {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .article-content {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .doctor-appointment {
+        width: 100% !important;
+    }
+
+    .dropdown {
+        right:10px !important;
+    }
+
+    .back-link {
+        display: none;
+    }
+
+    .header-wrapper {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .content-wrapper {
+        width: 100% !important;
+    }
+
+    .content-wrapper-2 {
+        width: 100% !important;
+    }
+
+    .symptom-content {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .article-content {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .doctor-appointment {
+        width: 100% !important;
+    }
+
+    .dropdown {
+        right:10px !important;
+    }
+
+    .back-link {
+        display: none;
+    }
+
+    .header-wrapper {
+        width: 90% !important;
+    }
+}
+
+/*********************** main content ***************************/
+.user-info .line {
+    margin: 100px 0 60px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.header-wrapper {
+    width: 72%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/*********************** profile home ***************************/
+
+.content-wrapper {
+    width:72%;
+    border-radius:2px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 20px auto;
+}
+
+.content-wrapper-2 {
+    width:72%;
+    margin: 20px auto;
+}
+
+.page-content {
+    position: absolute;
+    top: 62px;
+    min-height: calc(100% - 62px);
+}
+
+/*********************** Before appointment ******************************/
+
+.step-buttons {
+    width: 72%;
+    margin: 0 auto;
+}
+
+.step-buttons a {
+    float: right;
+}
+
+
+/*********************** Make appointment ******************************/
+.doctor-appointment {
+    width: 60%;
+}
+
+.doctor-block img {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.doctor-block {
+    text-align: left;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+    border: solid 1px #dddfe2;
+    padding: 30px;
+    width: 100%;
+    height: auto;
+    margin: 30px auto;
+}
+
+.doctor-block img {
+    margin: 0 auto;
+}
+
+.time-slots {
+    margin: 5px 0;
+}
+
+/*********************** Confirm appointment ******************************/
+.confirm-appointment #submit-btn {
+    float: right;
+}
+
+.confirm-appointment #cancel-btn {
+    float: right;
+    margin-right: 4px;
+}
+
+.confirm-appointment .inner-wrapper{
+    padding: 0 20px;
+}
+
+.confirm-appointment.content-wrapper {
+    width: 50%;
+}
+
+/************************* Doctor My Patients *************************/
+.my-patients {
+    width: 50%;
+}
+
+
+/************************* My Appointments ***************************/
+
+.my-appointment table {
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+    width: 100%;
+}
+
+.my-appointment tr {
+    border: 1px solid #dddddd;
+}
+
+.my-appointment th {
+    text-align: left;
+    padding: 10px;
+    background: #f5f5f5;
+}
+
+.my-appointment td {
+    text-align: left;
+    padding: 10px;
+}
+
+.my-appointment h3 {
+    text-align: center;
+}
+
+/********************* My Doctors ***********************/
+.my-doctors table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.my-doctors h3 {
+    text-align: center;
+}
+
+#back {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
+/********************* Search for Symptoms & Disease **********************/
+.disease button{
+    margin:4px 4px;
+}
+
+.symptom button{
+    margin:4px 4px;
+}
+
+/********************* Symptom & Disease Profile **********************/
+/* use symptom for both symptom and disease*/
+
+.symptom-content {
+    width:72%;
+    background-color: #FFFFFF;
+    padding: 20px 40px;
+    margin: 0 auto;
+}
+
+.symptom-content h1{
+    color: #42A5F5;
+}
+
+.symptom-content h3{
+    color: #42A5F5;
+}
+
+.symptom-line {
+    margin: 20px auto;
+    width: 68%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.doctor-card {
+    display: flex;
+    min-width: 200px;
+    flex: 1 1;
+    flex-direction: column;
+    padding: 32px 20px;
+    border: 1px solid #e8e9eb;
+    border-radius: 8px;
+    background-color: #fff;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.doctors-inner {
+    display: flex;
+    width: 31%;
+}
+
+.doctors-outer {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.doctor-card h5{
+    color: black;
+}
+
+.doctor-card p{
+    color: grey;
+}
+
+.doctor-card img {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.doctor-card:hover {
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+/********************* Doctor Display **********************/
+
+.doctor-display {
+    min-height: 400px;
+}
+
+.doctor-display img {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+/********************* Articles **********************/
+
+.article-content {
+    width:72%;
+    background-color: #FFFFFF;
+    padding: 20px 40px;
+    margin: 0 auto;
+}
+

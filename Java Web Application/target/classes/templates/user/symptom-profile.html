@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/profile.css" th:href="@{/css/profile.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title th:text="${symptom.name}">Symptom</title>
+
+</head>
+<body>
+<nav th:replace="user/_fragments :: navbar" class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand brand-text" href="../index.html" th:href="@{/}">TrojanMD</a>
+
+    <div class="dropdown">
+        <a th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}" class=" dropdown-toggle" href="#" style="text-decoration: none; color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Jason Doe
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="user-info.html" th:href="@{/user-info}">Contact Information</a>
+            <a class="dropdown-item" href="#" th:href="@{/}">Payment</a>
+            <a class="dropdown-item" href="#" th:href="@{/}">Support</a>
+            <a class="dropdown-item" href="user-login.html" th:href="@{/user/logout}">Sign Out</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Vertical navbar -->
+<div th:replace="user/_fragments :: vertical-navbar(8)" class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+            <img src="https://ui-avatars.com/api/?name=Jason+Doe&background=0D8ABC&color=fff&font-size=0.55" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0" th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}">Jason Doe</h4>
+            </div>
+        </div>
+    </div>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Search</p>
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="search-for-disease.html" class="nav-link text-dark font-italic">
+                Diseases
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="search-for-symptom.html" class="nav-link font-italic">
+                Symptoms
+            </a>
+        </li>
+    </ul>
+    <br>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Main</p>
+
+    <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="home.html" class="nav-link text-dark font-italic">
+                Home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="visit.html" th:href="@{/}" class="nav-link text-dark font-italic">
+                Previous Visits
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="my-appointment.html" th:href="@{/}" class="nav-link text-dark font-italic">
+                My Appointments
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="my-doctor.html" th:href="@{/}" class="nav-link text-dark font-italic">
+                My Doctors
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="prescription.html" th:href="@{/}" class="nav-link text-dark font-italic">
+                Prescriptions
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="lab-test.html" th:href="@{/}" class="nav-link text-dark font-italic">
+                Lab Tests
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- End vertical navbar -->
+
+<div class="container-fluid page-content pt-2" id="content">
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white shadow-sm mb-2"><i class="fa fa-bars"></i><small class="text-uppercase font-weight-bold"></small></button>
+
+    <a class = "back-link" href="#" onclick="window.history.go(-1)">
+        <button class="btn btn-outline-secondary btn-sm ml-2">Back</button>
+    </a>
+    <div class="symptom-content">
+        <h1 th:text="${symptom.name}">Diarrhea</h1>
+        <p th:if="${symptom.description != ''}" th:utext="${symptom.descriptionHtml}">
+            Diarrhea is an increase in the wateriness, volume, or frequency of bowel
+            movements. When you have diarrhea, foods and fluid pass too quickly, or
+            in too large an amount through your colon, and your body does not absorb
+            the fluid. Almost everyone has an episode of diarrhea at some time.
+
+            Acute diarrhea is uncomfortable, but usually is not serious and will go
+            away in a few days on its own. You should see a doctor, however, if your
+            stool contains blood, if the diarrhea is severe, or if it lasts more than
+            a few days. Children and elderly people are at higher risk of dehydration
+            and should see their doctor sooner.
+        </p>
+        <br>
+        <h3 th:if="${symptom.cause != ''}">Common causes</h3>
+        <p th:if="${symptom.cause != ''}" th:utext="${symptom.causeHtml}">
+            Most diarrhea is caused by bacteria, parasites, or viruses, often from food or water.
+            Eating local food and drinking local water during travel can result in "traveler's
+            diarrhea." Diarrhea can also be caused by:
+
+            Reactions to medications (including some vitamins, minerals, and herbs)
+            Reactions to artificial sweeteners (such as sorbitol and mannitol)
+            Consuming milk or dairy products if you are lactose-intolerant
+            Diarrhea that results in blood in the stool, accompanied by fever or abdominal pain,
+            could be caused by intestinal disorders, such as inflammatory bowel disease (IBD) or
+            Crohn disease, and requires a doctor's care.
+
+        </p>
+        <br>
+        <h3 th:if="${symptom.treatment != ''}">Treatments</h3>
+        <p th:if="${symptom.treatment != ''}" th:utext="${symptom.treatmentHtml}"></p>
+
+
+    </div>
+
+    <div class="symptom-line">&nbsp;</div>
+
+    <div class="symptom-content">
+        <h3>Related Diseases</h3>
+        <br>
+        <p th:if="${(diseases != null) &amp;&amp; (diseases.isEmpty())}">Sorry, no diseases are found.</p>
+        <div th:unless="${diseases == null}">
+            <a th:each="disease : ${diseases}" th:href="@{/user/disease/{id}(id=${disease.id})}" href="">
+                <button type="button" class="btn btn-outline-secondary" th:text="${disease.name}">Headache</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<script>
+    $(function() {
+        // Sidebar toggle behavior
+        $('#sidebarCollapse').click(function() {
+            $('#sidebar, #content').toggleClass('active');
+        });
+    });
+</script>
+</body>
+</html>

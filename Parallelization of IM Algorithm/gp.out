@@ -1,0 +1,14 @@
+---------- Begin SLURM Prolog ----------
+Job ID:        5204006
+Username:      lihengl
+Accountname:   lc_vkp2
+Name:          graph-partition.sl
+Partition:     quick
+Nodelist:      hpc[3997-4000]
+TasksPerNode:  1(x4)
+CPUsPerTask:   Default[1]
+TMPDIR:        /tmp/5204006.quick
+SCRATCHDIR:    /staging/scratch/5204006
+Cluster:       uschpc
+HSDA Account:  false
+---------- 2019-12-04 21:02:15 ---------

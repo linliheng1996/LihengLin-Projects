@@ -1,0 +1,30 @@
+extends base
+
+mixin navItem(link, text, page)
+    li
+        a(href=`${link}` style=`${title === page ? 'color: #004d00' : '#ffffff'}`) #{text}
+
+block content
+    .account-wrapper
+        .account-content
+            .row
+                .col-sm-4.side-navbar
+                    .image-and-name
+                        img(src=`img/users/${user.photo}`)
+                        h4= `${user.firstName} ${user.lastName}`
+                    .line &nbsp;
+                    nav
+                        ul
+                            +navItem('/account-settings', 'Account Settings', 'Account Settings')
+                            +navItem('/profile', 'My Profile', 'My Profile')
+                            +navItem('/time-purchased', 'Time Purchased', 'Time Purchased')
+                            +navItem('/time-sold', 'Time Sold', 'Time Sold')
+                            +navItem('/selling', 'Selling', 'Selling')
+                            +navItem('/sell-time', 'Sell My Time', 'Sell My Time')
+                            //+navItem('/request-appointment', 'Request Slots', 'Request Appointments')
+                            +navItem('/market', 'Marketplace', 'Marketplace')
+
+                .col-sm-8
+                    .sub-content.clearfix
+                        block sub-content
+                            h4 This is a placeholder for content

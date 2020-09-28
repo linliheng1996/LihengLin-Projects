@@ -1,0 +1,5 @@
+salloc --nodes=4 --ntasks-per-node=1 --time=00:05:00
+salloc --ntasks=30
+
+source /usr/usc/openmpi/default/setup.sh
+rm -f mpi-static && make mpi-static && mpirun -np 8 ./mpi-static

@@ -1,0 +1,24 @@
+header.header
+    nav.navbar.navbar-expand-lg.navbar-dark
+        a.navbar-brand(href='/') Time Market
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarNavAltMarkup.collapse.navbar-collapse
+            .navbar-nav
+                a.nav-link(href='/what-is-it', class=`${title === 'What Is It' ? 'active' : ''}`) What is it?
+                a.nav-link(href='/how-it-works', class=`${title === 'How It Works' ? 'active' : ''}`) How It Works?
+                a.nav-link(href=`${user == null ? 'market-preview' : 'market'}`, class=`${title === 'Marketplace' ? 'active' : ''}`) Marketplace
+
+        if user
+            a.nav-link(href='/account')
+                img(src=`/img/users/${user.photo}`)
+                span= user.firstName + ' ' + user.lastName
+            a.nav-link(href='/login')
+                button#logout.btn.btn-sm.btn-outline-secondary log out
+
+        else
+            a.nav-link(href='/login')
+                button.btn.btn-sm.btn-outline-secondary log in
+            a.nav-link(href='/signup')
+                button.btn.btn-sm.btn-outline-secondary sign up
+

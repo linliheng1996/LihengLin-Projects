@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <!-- Vertical navbar -->
+    <div th:fragment="vertical-navbar(n)" class="vertical-nav bg-white" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media d-flex align-items-center">
+                <img src="https://ui-avatars.com/api/?name=Administrator&background=0D8ABC&color=fff&font-size=0.55" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                <div class="media-body">
+                    <h4 class="m-0">Administrator</h4>
+                </div>
+            </div>
+        </div>
+        <!--    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0">Search</p>-->
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="diseases.html" th:href="@{/admin/diseases}" class="nav-link font-italic" th:classappend="${n==1} ? 'bg-light' : 'text-dark'">
+                    Diseases
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="bodySystems.html" th:href="@{/admin/body-systems}" class="nav-link font-italic" th:classappend="${n==2} ? 'bg-light' : 'text-dark'">
+                    Body Systems
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="symptoms.html" th:href="@{/admin/symptoms}" class="nav-link font-italic" th:classappend="${n==3} ? 'bg-light' : 'text-dark'">
+                    Symptoms
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="bodyParts.html" th:href="@{/admin/body-parts}" class="nav-link font-italic" th:classappend="${n==4} ? 'bg-light' : 'text-dark'">
+                    Body Parts
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="articles.html" th:href="@{/admin/articles}" class="nav-link font-italic" th:classappend="${n==5} ? 'bg-light' : 'text-dark'">
+                    Articles
+                </a>
+            </li>
+
+        </ul>
+        <br>
+    </div>
+    <!-- End vertical navbar -->
+
+</body>
+</html>

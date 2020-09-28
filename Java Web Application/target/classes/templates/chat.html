@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/profile.css" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" href="../static/css/chat.css" th:href="@{/css/chat.css}">
+    <script src="https://kit.fontawesome.com/a1f1fd3d1f.js" crossorigin="anonymous"></script>
+    <title>Chat</title>
+
+</head>
+<body>
+    <input type="hidden" class="receiverEmail" th:value="${session.receiver.getEmail()}">
+    <input type="hidden" class="receiverFirstName" th:value="${session.receiver.getFname()}">
+    <input type="hidden" class="receiverLastName" th:value="${session.receiver.getLname()}">
+    <input type="hidden" class="myEmail" th:value="${session.loggedInUser.getEmail()}">
+    <input type="hidden" class="myFirstName" th:value="${session.loggedInUser.getFname()}">
+    <input type="hidden" class="myLastName" th:value="${session.loggedInUser.getLname()}">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand brand-text" href="../index.html" th:href="@{/}">TrojanMD</a>
+
+    <!--    <div class="dropdown">-->
+    <!--        <a th:text="${session.loggedInUser.getFname()} + ' ' + ${session.loggedInUser.getLname()}" class=" dropdown-toggle" href="#" style="text-decoration: none; color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+    <!--            Jason Doe-->
+    <!--        </a>-->
+    <!--        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">-->
+    <!--            <a class="dropdown-item" href="user-info.html" th:href="@{/user-info}">Contact Information</a>-->
+    <!--            <a class="dropdown-item" href="#" th:href="@{/}">Payment</a>-->
+    <!--            <a class="dropdown-item" href="#" th:href="@{/}">Support</a>-->
+    <!--            <a class="dropdown-item" href="user-login.html" th:href="@{/user/logout}">Sign Out</a>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    </nav>
+
+
+    <div class="chat">
+        <div class="chat-top clearfix">
+            <a href="javascript:history.go(-1);">
+                <i class="fas fa-chevron-left fa-2x" style="color:white; margin-top: 9px; margin-left: 4px; float: left"></i>
+            </a>
+            <h4 th:text="${session.receiver.getFname()} + ' ' + ${session.receiver.getLname()}">William Smith</h4>
+        </div>
+        <div class="chat-upper" id="chat-upper">
+            <ul class="messages">
+                <li th:each="chatLog : ${chatLogs}" th:classappend="${chatLog.getSender() == session.loggedInUser.getEmail()} ? 'self'">
+                    <img th:if="${chatLog.getSender() == session.receiver.getEmail()}" th:src="@{https://ui-avatars.com/api/(name=${session.receiver.getFname()}+' '+${session.receiver.getLname()}, background='0D8ABC', color='fff')}" src="https://ui-avatars.com/api/?name=Wason+Soe&background=0D8ABC&color=fff" alt="..." class="rounded-circle">
+                    <img th:if="${chatLog.getSender() == session.loggedInUser.getEmail()}" th:src="@{https://ui-avatars.com/api/(name=${session.loggedInUser.getFname()}+' '+${session.loggedInUser.getLname()}, background='0D8ABC', color='fff')}" src="https://ui-avatars.com/api/?name=Wason+Soe&background=0D8ABC&color=fff" alt="..." class="rounded-circle">
+                    <div th:text="${chatLog.getContent()}" class="text">Hi</div>
+                </li>
+<!--                <li class="self">-->
+<!--                    <img th:src="@{https://ui-avatars.com/api/(name=${session.loggedInUser.getFname()}+' '+${session.loggedInUser.getLname()}, background='0D8ABC', color='fff')}" src="https://ui-avatars.com/api/?name=Lason+Loe&background=0D8ABC&color=fff" alt="..." class="rounded-circle">-->
+<!--                    <div class="text">Hi</div>-->
+<!--                </li>-->
+
+            </ul>
+        </div>
+        <div class="chat-lower clearfix">
+            <label>
+                <textarea id="msg" cols="80"></textarea>
+            </label>
+            <div class="message-container">
+                <button type="button" class="btn btn-primary btn-sm" id="send-message">Send</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script th:src="@{/js/sockjs.min.js}"></script>
+    <script th:src="@{/js/stomp.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script>
+
+        var receiverImgUrl = $('.receiverFirstName').val() + '+' + $('.receiverLastName').val();
+        var myImgUrl = $('.myFirstName').val() + '+' + $('.myLastName').val();
+        var receiver = $('.receiverEmail').val();
+        var sender = $('.myEmail').val();
+        var div = document.getElementById('chat-upper');
+
+        div.scrollTop = div.scrollHeight;
+
+        $('#msg').keypress(function(e){
+            if(e.keyCode === 13 && e.ctrlKey){
+                document.getElementById("msg").value += "\n";
+            }else if(e.keyCode === 13){
+                e.preventDefault();
+                sendMsg()
+            }
+        });
+
+        $('#send-message').click(function(e){
+            e.preventDefault();
+            sendMsg();
+        });
+        function sendMsg() {
+            var msg = $('#msg').val();
+            if(msg==''){
+                alert('Cannot send empty message!');
+                return;
+            }
+            console.log("msg: " + msg);
+            sendSpittle(msg, receiver);
+            $('.messages').append("<li class=\"self\">\n" +
+                "                <img src=\"https://ui-avatars.com/api/?name=" +myImgUrl + "\&background=0D8ABC\&color=fff\" class=\"rounded-circle\">\n" +
+                "                <div class=\"text\">" + msg + "</div>\n" +
+                "            </li>");
+            $('#msg').val("");
+            // var div = document.getElementById('chat-upper');
+            div.scrollTop = div.scrollHeight;
+        }
+
+        //create connection
+        var sock = new SockJS("/Chat");
+        var stomp = Stomp.over(sock);
+        stomp.connect('guest', 'guest', function(frame) {
+            stomp.subscribe("/user/queue/notification", handleNotification);
+        });
+
+        function handleNotification(message) {
+            $('.messages').append("<li>\n" +
+                "                <img src=\"https://ui-avatars.com/api/?name=" +receiverImgUrl + "\&background=0D8ABC\&color=fff\" class=\"rounded-circle\">\n" +
+                "                <div class=\"text\">" + message.body + "</div>\n" +
+                "            </li>");
+            // var div = document.getElementById('chat-upper');
+            div.scrollTop = div.scrollHeight;
+        }
+
+        function sendSpittle(text, receiver) {
+            stomp.send("/chat", {}, JSON.stringify({'sender': sender, 'message': text, 'receiver':receiver }));
+        }
+        window.onunload = function() {sock.close()};
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+extends account
+
+block sub-content
+    form.form-profile(action="/", method='GET')
+        .form-group
+            label(for='firstName') First Name
+            input#firstName.form-control(type='text', value= user.firstName, required, name='firstName')
+        .form-group
+            label(for='firstName') Last Name
+            input#lastName.form-control(type='text', value= user.lastName, required, name='lastName')
+        .form-group
+            label(for="gender") Gender
+            select#gender.form-control(required, name="gender")
+                option(selected= user.gender === 'Male') Male
+                option(selected= user.gender ===  'Female') Female
+                option(selected= user.gender === 'Non-binary') Non-binary
+                option(selected= user.gender === 'Rather not say') Rather not say
+        .form-group
+            label(for='age') Age
+            input#age.form-control(type='number', value= user.age, required, name='age')
+        .form-group
+            label(for='major') Major
+            input#major.form-control(type='text', value = user.major, required, name='major')
+        .form-group
+            label(for='majorCategory') Major Category
+            select#majorCategory.form-control(required, name="majorCategory")
+                option(selected= user.majorCategory === 'Arts and Humanities') Arts and Humanities
+                option(selected= user.majorCategory === 'Business') Business
+                option(selected= user.majorCategory === 'Health and Medicine') Health and Medicine
+                option(selected= user.majorCategory === 'Multi-/Interdisciplinary Studies') Multi-/Interdisciplinary Studies
+                option(selected= user.majorCategory === 'Public and Social Services') Public and Social Services
+                option(selected= user.majorCategory === 'Science, Math and Technology') Science, Math and Technology
+                option(selected= user.majorCategory === 'Social Science') Social Science
+                option(selected= user.majorCategory === 'Trades and Personal Service') Trades and Personal Service
+                option(selected= user.majorCategory === 'Other') Other
+        .form-group
+            label(for='yearOfStudy') Year of Study
+            select#yearOfStudy.form-control(required, name="yearOfStudy")
+                option(selected= user.yearOfStudy === 'Freshman') Freshman
+                option(selected= user.yearOfStudy === 'Sophomore') Sophomore
+                option(selected= user.yearOfStudy === 'Junior') Junior
+                option(selected= user.yearOfStudy === 'Senior') Senior
+                option(selected= user.yearOfStudy === 'Master') Master
+                option(selected= user.yearOfStudy === 'PhD') PhD
+
+
+            //input#yearOfStudy.form-control(type='text', value = user.yearOfStudy, required, name='yearOfStudy')
+        .form-group
+            label(for='linkedIn') LinkedIn Account
+            input#linkedIn.form-control(type='text', value = user.linkedIn, name='linkedIn')
+        .form-group
+            label(for='personalWebsite') Personal Website (GitHub)
+            input#personalWebsite.form-control(type='text', value = user.personalWebsite, name='personalWebsite')
+        .form-group
+            label(for='description') Description
+            textarea#description.form-control(rows='6', required, name='description')= `${user.description ? user.description : ''}`
+        .form-group
+            button.btn.btn-primary.float-right Save
+

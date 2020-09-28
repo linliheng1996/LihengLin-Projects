@@ -1,0 +1,46 @@
+a. Liheng Lin
+
+b. 7074477991
+
+c. Completed all required functions. Completed suffix part. 
+
+d.
+serverA.cpp: the file of server A, which receives input and function from aws and return results through UDP
+
+serverA.h: the header file of server A, containing functions and member variables of server A class
+
+serverB.cpp: the file of server B, which receives input and function from aws and return results through UDP
+
+serverB.h: the header file of server B, containing functions and member variables of server B class
+
+serverC.cpp: the file of server C, which receives input and function from aws and return results through UDP
+
+serverC.h:the header file of server C, containing functions and member variables of server C class
+
+aws.cpp: the file of aws, which receives input and function from client, sends to server A, B, C, receives results from three servers and send the result back to client and to monitor.
+
+client.cpp: the file of the client, which sends input and function to the aws and receives the results from aws
+
+monitor.cpp: the file of the monitor, which receives results from aws
+
+Makefile
+
+
+e. The format of message exchanged: I only send one message between client, aws, server A, B, C and monitor. I put the function at the beginning of the message, the input word next from client to aws. the same message is sent from aws to three servers. Three servers send a message back to aws, with function at the beginning, and colons to seperate results. The aws then goes through the message and extract information from it, combines three results and sends back to client and monitor. These message are the same format, with function at the beginning, then a colon, then the user input, then the results. 
+
+
+f. Idiosyncrasy: 
+The project is case sensitive. The first letter of all inputs should be uppercase. For example: Government instead of government. 
+
+If there is match word but no similar word, or there's similar word but no match word, I let them print out < > to show there is missing one result. 
+
+In the monitor, if there is no one edit distance match found, it will not print this line, only print "found a match for <input>: <value>".
+
+g. Reused code from Beej's Guide to Network Programming:
+In aws.cpp: reused code for UDP_send(), UDP_recev(), get_in_addr() and main() function, to establish TCP with client and UDP, and UDP connections with server A, B, C.
+In serverA.cpp: reused code for get_in_addr() and main() function to establish UDP connection with AWS.
+In serverB.cpp: reused code for get_in_addr() and main() function to establish UDP connection with AWS.
+In serverC.cpp: reused code for get_in_addr() and main() function to establish UDP connection with AWS.
+In client.cpp: reused code for get_in_addr() and main() function to establish TCP connection with AWS.
+In monitor.cpp: reused code for get_in_addr() and main() function to establish TCP connection with AWS.
+ 

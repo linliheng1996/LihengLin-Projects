@@ -1,0 +1,34 @@
+extends base
+
+block content
+    .signup-content
+        .signup-inner
+            h2.green Welcome to Time Market
+            br
+            form.form-signup
+                .form-row
+                    .col
+                        input#firstName.form-control(type="text" placeholder="First Name" name="firstName" required)
+                    .col
+                        input#lastName.form-control(type="text" placeholder="Last Name" name="lastName" required)
+                .form-row
+                    .col
+                        input#email.form-control(type="email" placeholder="Email" name="email" required)
+                .form-row
+                    .col
+                        input#password.form-control(type="password" placeholder="Password" name="password" required)
+                .form-row
+                    .col
+                        input#passwordConfirm.form-control(type="password" placeholder="Confirm Password" name="passwordConfirm" required)
+                .form-group(style="margin-top:10px")
+                    .form-check
+                        input#gridCheck.form-check-input(type="checkbox" required)
+                        label.form-check-label.gray(for="gridCheck")
+                            | I agree to Time Market's
+                            a(href="#")= ` Terms of Services`
+                            |  and
+                            a(href="#")= ` Privacy Policy`
+                button.btn.btn-primary Sign Up
+                div.gray(style="margin-top:10px")
+                    | Already have an account?
+                    a(href="/login" style="text-decoration: none; color:dodgerblue")= ` Log in`
